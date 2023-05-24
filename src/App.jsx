@@ -1,4 +1,5 @@
 import './App.css';
+import { CssBaseline } from '@mui/material';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import SignupPage from './pages/SignupPage';
@@ -8,10 +9,11 @@ import ProductListPage from './pages/ProductListPage';
 function App() {
   return (
     <BrowserRouter>
+      <CssBaseline />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/products/:id" element={<ProductDetailPage />} />
+        <Route path="/products/:code" element={<ProductDetailPage />} />
         <Route path="/products/" element={<ProductListPage />} />
       </Routes>
     </BrowserRouter>
