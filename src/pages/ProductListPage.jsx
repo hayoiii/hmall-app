@@ -10,11 +10,12 @@ export default function ProductListPage() {
   useEffect(() => {
     axios.get('/products').then((response) => {
       // response = {status: number, data: {}}
+
       setProducts(response.data.products);
     });
   }, []);
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="lg">
       {products.length > 0 && <ProductItem product={products[0]} />}
     </Container>
   );

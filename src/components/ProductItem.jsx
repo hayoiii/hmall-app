@@ -1,24 +1,84 @@
-import { Box, Grid, Typography } from '@mui/material';
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
+  Typography,
+  CssBaseline,
+} from '@mui/material';
 export default function ProductItem({ product }) {
   return (
-    <Box>
-      <Grid>
-        <Box>
-          <img src={product.images[0]} width="300px" height="300px" alt="" />
-        </Box>
-        <Typography>{product.brand_name}</Typography>
-        <Typography>{product.name}</Typography>
-        <Typography>
-          {product.price}
-          {product.price < product.regular_price ? (
-            <span>
-              /{((product.regular_price - product.price) / product.price) * 100}
-              %
-            </span>
-          ) : undefined}
-        </Typography>
+    <Container sx={{ mt: 9 }} maxWidth="xl">
+      <Grid container spacing={1}>
+        <Grid item xs={3}>
+          <Card sx={{ boxShadow: 0 }}>
+            <CardMedia
+              sx={{ width:250, height: 300 }}
+              image={product.images[0]}
+            />
+            {/* <img src={product.images[0]} width="250px" height="300px" alt="" /> */}
+            <CssBaseline />
+            <CardContent sx={{ p: 1 }}>
+              <Typography
+                variant="caption"
+                component="div"
+                sx={{ color: 'text.secondary' }}
+              >
+                {product.brand_name}
+              </Typography>
+              <Typography variant="subtitle1" sx={{ mt: 0.2 }}>
+                {product.name}
+              </Typography>
+              <Typography variant="subtitle2">
+                {product.price} / {product.regular_price}
+                {/*   {product.price < product.regular_price ? (
+                <span>
+                  /
+                  {((product.regular_price - product.price) / product.price) *
+                    100}
+                  %
+                </span>
+              ) : undefined} */}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={3}>
+          <Card sx={{ boxShadow: 0 }}>
+            <CardMedia
+              sx={{ width:250, height: 300 }}
+              image={product.images[0]}
+            />
+            {/* <img src={product.images[0]} width="250px" height="300px" alt="" /> */}
+            <CssBaseline />
+            <CardContent sx={{ p: 1 }}>
+              <Typography
+                variant="caption"
+                component="div"
+                sx={{ color: 'text.secondary' }}
+              >
+                {product.brand_name}
+              </Typography>
+              <Typography variant="subtitle1" sx={{ mt: 0.2 }}>
+                {product.name}
+              </Typography>
+              <Typography variant="subtitle2">
+                {product.price} / {product.regular_price}
+                {/*   {product.price < product.regular_price ? (
+                <span>
+                  /
+                  {((product.regular_price - product.price) / product.price) *
+                    100}
+                  %
+                </span>
+              ) : undefined} */}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
-    </Box>
+    </Container>
   );
 }
 // (regular_price - price) / price * 100
