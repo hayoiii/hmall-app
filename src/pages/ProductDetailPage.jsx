@@ -31,17 +31,26 @@ export default function ProductDetailPage() {
       {product !== undefined && (
         <Box>
           {product.name}
-          {product.color_options_image.map((color, idx) => (
-            <div
-              key={idx}
-              style={{
-                backgroundImage: `url(${color})`,
-                width: 30,
-                height: 30,
-              }}
-            />
-          ))}
-          <Select id="size" autoWidth value={size}>
+          <Box sx={{ display: 'flex' }}>
+            {product.color_options_image.map((color, idx) => (
+              <div
+                key={idx}
+                style={{
+                  backgroundImage: `url(${color})`,
+                  width: 20,
+                  height: 20,
+                  borderRadius: '50%',
+                  margin: 2,
+                }}
+              />
+            ))}
+          </Box>
+          <Select
+            id="size"
+            autoWidth
+            value={size}
+            sx={{ minWidth: 60, height: 30 }}
+          >
             {product.size_options.map((size, idx) => {
               return (
                 <MenuItem key={idx} value={size}>
