@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../api/axios.js';
 import { useParams } from 'react-router-dom';
-import { Container, Box, Select, MenuItem } from '@mui/material';
-
+import {
+  Container,
+  Box,
+  Select,
+  MenuItem,
+  TextField,
+  Typography,
+  IconButton,
+} from '@mui/material';
+import { Check, Close } from '@mui/icons-material';
+import ImageSlider from '../components/ImageSlider.jsx';
 //'/'
 export default function ProductDetailPage() {
   // 1. path parmameter를 추출하기
@@ -13,16 +22,34 @@ export default function ProductDetailPage() {
 
   const [product, setProduct] = useState();
   const [size, setSize] = useState('');
+  const [color, setColor] = useState('');
+  const [quantity, setQuantity] = useState('1');
 
   useEffect(() => {
     axios.get('/products/' + code).then((response) => {
       setProduct(response.data.product);
+      setColor(response.data.product.color_text);
     });
   }, []);
 
-  // 1. () => { return 3 }
-  // 2. () => 3
+  const handleChangeSize = (e) => {
+    // 사용자가 입력한 값으로 size를 업데이트한다.
+    setSize(e.target.value);
+  };
 
+  const handleClickColor = (idx) => {
+    // 사용자가 입력한 값으로 color를 업데이트한다.
+    console.log(idx);
+    setColor(product.color_options_text[idx]);
+  };
+
+  const handleInputQuantity = (e) => {
+    setQuantity(e.target.value);
+  };
+
+  const handleClickClose = (e) => {
+    setSize('');
+  };
   // JSX
   return (
     <Container>
@@ -30,35 +57,80 @@ export default function ProductDetailPage() {
 
       {product !== undefined && (
         <Box>
-          {product.name}
-          <Box sx={{ display: 'flex' }}>
-            {product.color_options_image.map((color, idx) => (
-              <div
-                key={idx}
-                style={{
-                  backgroundImage: `url(${color})`,
-                  width: 20,
-                  height: 20,
-                  borderRadius: '50%',
-                  margin: 2,
-                }}
-              />
-            ))}
+          <ImageSlider images={product.images} />
+          <Box>
+            {product.name}
+            <Box sx={{ display: 'flex' }}>
+              {product.color_options_image.map((colorUrl, idx) => (
+                <Box key={idx} sx={{ position: 'relative' }}>
+                  <Box
+                    sx={{
+                      backgroundImage: `url(${colorUrl})`,
+                      width: 20,
+                      height: 20,
+                      borderRadius: '50%',
+                      margin: 2,
+                      cursor: 'pointer',
+                    }}
+                    // onClick={handleClickColor}
+                    onClick={() => handleClickColor(idx)}
+                  />
+                  {/* 선택한 color이면 Check를 렌더링한다 (if) &&연산자 */}
+                  {/* 삼항연산자: 조건문 ? [true] : [false] (if else) */}
+                  {color === product.color_options_text[idx] && (
+                    <Check
+                      sx={{
+                        color: 'white',
+                        width: 20,
+                        height: 20,
+                        margin: 2,
+                        position: 'absolute',
+                        top: 0,
+                      }}
+                    />
+                  )}
+                </Box>
+              ))}
+              <p>{color}</p>
+            </Box>
+            <Select
+              id="size"
+              name="size"
+              autoWidth
+              value={size}
+              sx={{ minWidth: 60, height: 30 }}
+              onChange={handleChangeSize}
+            >
+              {product.size_options.map((size, idx) => {
+                return (
+                  <MenuItem key={idx} value={size}>
+                    {size}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+            {size !== '' && (
+              <Box>
+                <Typography component="p">{size}</Typography>
+                <TextField
+                  id="num"
+                  type="number"
+                  value={quantity}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="standard"
+                  onInput={handleInputQuantity}
+                />
+                <Typography component="p">
+                  {product.price * quantity}
+                </Typography>
+                <IconButton onClick={handleClickClose}>
+                  <Close />
+                </IconButton>
+              </Box>
+            )}
           </Box>
-          <Select
-            id="size"
-            autoWidth
-            value={size}
-            sx={{ minWidth: 60, height: 30 }}
-          >
-            {product.size_options.map((size, idx) => {
-              return (
-                <MenuItem key={idx} value={size}>
-                  {size}
-                </MenuItem>
-              );
-            })}
-          </Select>
         </Box>
       )}
     </Container>
