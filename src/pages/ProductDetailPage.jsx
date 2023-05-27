@@ -56,10 +56,11 @@ export default function ProductDetailPage() {
       {/* 조건부 렌더링 - product가 undefined가 아니면 렌더링한다 */}
 
       {product !== undefined && (
-        <Box>
+        <Box sx={{ display: 'flex', justifyContent: 'space-evenly', p: 1 }}>
           <ImageSlider images={product.images} />
-          <Box>
-            {product.name}
+          <Box sx={{ mt: 5 }}>
+            <Typography component="h3">{product.name}</Typography>
+
             <Box sx={{ display: 'flex' }}>
               {product.color_options_image.map((colorUrl, idx) => (
                 <Box key={idx} sx={{ position: 'relative' }}>
@@ -91,8 +92,8 @@ export default function ProductDetailPage() {
                   )}
                 </Box>
               ))}
-              <p>{color}</p>
             </Box>
+            <Typography sx={{ textAlign: 'center' }}>{color}</Typography>
             <Select
               id="size"
               name="size"
@@ -110,8 +111,8 @@ export default function ProductDetailPage() {
               })}
             </Select>
             {size !== '' && (
-              <Box>
-                <Typography component="p">{size}</Typography>
+              <Box sx={{ p: 1 }}>
+                {/* <Typography component="p">{size}</Typography> */}
                 <TextField
                   id="num"
                   type="number"
@@ -122,12 +123,13 @@ export default function ProductDetailPage() {
                   variant="standard"
                   onInput={handleInputQuantity}
                 />
-                <Typography component="p">
-                  {product.price * quantity}
-                </Typography>
+
                 <IconButton onClick={handleClickClose}>
                   <Close />
                 </IconButton>
+                <Typography component="p">
+                  {product.price * quantity}
+                </Typography>
               </Box>
             )}
           </Box>
