@@ -52,7 +52,7 @@ export default function ProductDetailPage() {
   };
   // JSX
   return (
-    <Container>
+    <Container maxWidth="md">
       {/* 조건부 렌더링 - product가 undefined가 아니면 렌더링한다 */}
 
       {product !== undefined && (
