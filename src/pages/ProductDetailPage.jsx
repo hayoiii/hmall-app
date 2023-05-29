@@ -41,12 +41,14 @@ export default function ProductDetailPage() {
     // 사용자가 입력한 값으로 color를 업데이트한다.
     console.log(idx);
     setColor(product.color_options_text[idx]);
+    //product.color.options_text[idx]=> 프로덕트안의 컬러안의 옵션텍스트의 클릭한 인덱스번호를 setColor에 넣어줌
   };
 
   const handleInputQuantity = (e) => {
     setQuantity(e.target.value);
   };
 
+  //닫기 버튼을 누르면 닫는 이벤트 핸들러, close버튼을 누르면 seSize를 초기값으로 변경
   const handleClickClose = (e) => {
     setSize('');
   };
@@ -58,7 +60,7 @@ export default function ProductDetailPage() {
       {product !== undefined && (
         <Box sx={{ display: 'flex', justifyContent: 'space-evenly', p: 1 }}>
           <ImageSlider images={product.images} />
-          <Box sx={{ mt: 5 }}>
+          <Box sx={{ ml: 4, mt: 2 }}>
             <Typography component="h3">{product.name}</Typography>
 
             <Box sx={{ display: 'flex' }}>
