@@ -130,15 +130,15 @@ export default function ProductDetailPage() {
       };
       // [A, B, C] -> [A, B, C, cartItem]
       // json -> string
-      const previousCart = cookie.get('cart')
-      if(previousCart === undefined ){
-        cookie.set('cart', JSON.stringify([cartItem]),{expires:30});
+      const previousCart = cookie.get('cart');
+      if (previousCart === undefined) {
+        cookie.set('cart', JSON.stringify([cartItem]), { expires: 30 });
       } else {
         //string -> JSON
-        const carts = JSON.parse(previousCart)
+        const carts = JSON.parse(previousCart);
         // 기존 carts 어레이에 cartItem을 추가한다
-        carts.push(cartItem)
-        cookie.set('cart',JSON.stringify(carts),{expires:30})
+        carts.push(cartItem);
+        cookie.set('cart', JSON.stringify(carts), { expires: 30 });
       }
 
       // 다이얼로그를 띄운다.
@@ -156,7 +156,7 @@ export default function ProductDetailPage() {
   };
   // JSX
   return (
-    <Box>
+    <Box sx={{ height: '100vh' }}>
       <Dialog open={open}>
         <Box sx={{ p: 2 }}>
           <Box sx={{ display: 'flex' }}>
@@ -185,7 +185,9 @@ export default function ProductDetailPage() {
             <Box sx={{ display: 'flex', justifyContent: 'space-evenly', p: 1 }}>
               <ImageSlider images={product.images} />
               <Box sx={{ ml: 4, mt: 2 }}>
-                <Typography component="h3">{product.name}</Typography>
+                <Typography sx={{ mb: 5 }}>{product.brand_name}</Typography>
+                <Typography variant="subtitle">{product.code}</Typography>
+                <Typography variant="h5">{product.name}</Typography>
 
                 <Box sx={{ display: 'flex' }}>
                   {product.color_options_image.map((colorUrl, idx) => (
@@ -224,8 +226,8 @@ export default function ProductDetailPage() {
                   id="size"
                   name="size"
                   autoWidth
-                  value={size}
-                  sx={{ minWidth: 60, height: 30 }}
+                  value={size} //데이터 바인딩
+                  sx={{ minWidth: '90%', height: 30, mt: 2, mb: 2 }}
                   onChange={(e) => handleChangeSize(e)}
                 >
                   {product.size_options.map((size, idx) => {
@@ -237,36 +239,70 @@ export default function ProductDetailPage() {
                   })}
                 </Select>
                 {size !== '' && (
-                  <Box sx={{ p: 1 }}>
+                  <Box sx={{}}>
                     <Typography component="p">{size}</Typography>
-                    <TextField
-                      id="num"
-                      type="number"
-                      value={quantity}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      variant="standard"
-                      onInput={handleInputQuantity}
-                    />
-
-                    <IconButton onClick={handleClickClose}>
-                      <Close />
-                    </IconButton>
-                    <Typography component="p">
-                      {product.price * quantity}
-                    </Typography>
+                    <Box
+                      sx={{ display: 'flex', justifyContent: 'space-between' }}
+                    >
+                      <TextField
+                        id="num"
+                        type="number"
+                        value={quantity}
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        variant="standard"
+                        onInput={handleInputQuantity}
+                      />
+                      <Box>
+                        <Typography variant="p">{product.price}</Typography>
+                        <IconButton onClick={handleClickClose}>
+                          <Close />
+                        </IconButton>
+                      </Box>
+                    </Box>
+                    <Box sx={{ display: 'flex', height: 70 }}>
+                      <Typography variant="span">합계</Typography>
+                      <Typography variant="h6">
+                        {product.price * quantity}
+                      </Typography>
+                    </Box>
                   </Box>
                 )}
-                <Box>
+                <Box
+                  sx={{
+                    Width: '100%',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
                   <Button
                     variant="contained"
-                    sx={{ mr: 3 }}
+                    sx={{
+                      ':hover': {
+                        bgcolor: 'black',
+                      },
+                      mr: 1,
+                      minWidth: '48%',
+                      bgcolor: 'black',
+                    }}
                     onClick={handleClickCart}
                   >
                     장바구니
                   </Button>
-                  <Button variant="contained">바로구매</Button>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      ':hover': {
+                        bgcolor: 'darkorange',
+                      },
+                      minWidth: '48%',
+                      bgcolor: 'darkorange',
+                    }}
+                  >
+                    바로구매
+                  </Button>
                 </Box>
               </Box>
             </Box>

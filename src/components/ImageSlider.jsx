@@ -3,7 +3,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useState } from 'react';
 
-//이렇게 자주 쓰일 법한 것들은 변수에 넣어 사용하면 작성하는게 보다 편해짐 
+//이렇게 자주 쓰일 법한 것들은 변수에 넣어 사용하면 작성하는게 보다 편해짐
 const IMAGE_WIDTH = 300;
 const buttonStyle = {
   height: '30px',
@@ -28,11 +28,11 @@ export default function ImageSlider({ images }) {
       setCurrentIdx(currentIdx - 1);
     } else if (!isBack) {
       // 오른쪽으로 이동
-      //length를쓰면 0부터가 아니라 1부터 세기때문에 -1을 해준값을 lastIdx에 넣어줌! 
+      //length를쓰면 0부터가 아니라 1부터 세기때문에 -1을 해준값을 lastIdx에 넣어줌!
       const lastIdx = images.length - 1;
       //currentIdx가 lastIdx와 같거나 크면 리턴
       if (currentIdx >= lastIdx) return;
-      //그게 아니라면 setCurrentIdx에 +1을 해준다 
+      //그게 아니라면 setCurrentIdx에 +1을 해준다
       setCurrentIdx(currentIdx + 1);
     }
   };
@@ -81,7 +81,7 @@ export default function ImageSlider({ images }) {
       </Box>
       <Box
         className="indicator"
-        sx={{ display: 'flex', justifyContent: 'center' }}
+        sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}
       >
         {images.map((image, idx) => {
           return (
