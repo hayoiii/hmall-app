@@ -16,6 +16,8 @@ import {
 import { Check, Close } from '@mui/icons-material';
 import ImageSlider from '../components/ImageSlider.jsx';
 import cookie from 'js-cookie';
+import Alert from '../components/Alert.jsx';
+import ColorOption from '../components/ColorOption.jsx';
 
 //npm install js-cookie
 
@@ -157,26 +159,7 @@ export default function ProductDetailPage() {
   // JSX
   return (
     <Box sx={{ height: '100vh' }}>
-      <Dialog open={open}>
-        <Box sx={{ p: 2 }}>
-          <Box sx={{ display: 'flex' }}>
-            <DialogTitle>장바구니 담기 완료</DialogTitle>
-            <IconButton onClick={() => setOpen(false)} sx={{ height: '36px' }}>
-              <Close />
-            </IconButton>
-          </Box>
-          <Typography component="p">
-            해당상품이 장바구니에 담겼습니다.
-          </Typography>
-          <Typography component="p">장바구니로 이동하시겠습니까?</Typography>
-          <Box>
-            <Button variant="contained" sx={{ mr: 2 }}>
-              계속 쇼핑하기
-            </Button>
-            <Button variant="contained">장바구니 보기</Button>
-          </Box>
-        </Box>
-      </Dialog>
+      <Alert open={open} onClickClose={() => setOpen(false)} />
       <Container maxWidth="md">
         {/* 조건부 렌더링 - product가 undefined가 아니면 렌더링한다 */}
 
@@ -188,40 +171,12 @@ export default function ProductDetailPage() {
                 <Typography sx={{ mb: 5 }}>{product.brand_name}</Typography>
                 <Typography variant="subtitle">{product.code}</Typography>
                 <Typography variant="h5">{product.name}</Typography>
-
-                <Box sx={{ display: 'flex' }}>
-                  {product.color_options_image.map((colorUrl, idx) => (
-                    <Box key={idx} sx={{ position: 'relative' }}>
-                      <Box
-                        sx={{
-                          backgroundImage: `url(${colorUrl})`,
-                          width: 20,
-                          height: 20,
-                          borderRadius: '50%',
-                          margin: 2,
-                          cursor: 'pointer',
-                        }}
-                        // onClick={handleClickColor}
-                        onClick={() => handleClickColor(idx)}
-                      />
-                      {/* 선택한 color이면 Check를 렌더링한다 (if) &&연산자 */}
-                      {/* 삼항연산자: 조건문 ? [true] : [false] (if else) */}
-                      {color === product.color_options_text[idx] && (
-                        <Check
-                          sx={{
-                            color: 'white',
-                            width: 20,
-                            height: 20,
-                            margin: 2,
-                            position: 'absolute',
-                            top: 0,
-                          }}
-                        />
-                      )}
-                    </Box>
-                  ))}
-                </Box>
-                <Typography sx={{ textAlign: 'center' }}>{color}</Typography>
+                {/* 
+                  1. 함수 이름을 넘겨주는 방식 handleClickColor
+                  2. 익명 화살표 함수로 호출하는 방식 () => handleClickColor()
+                */}
+                <ColorOption colorImages={product.color_options_image} color={color} onClickColor={handleClickColor} select={product.color_options_text}/>
+                
                 <Select
                   id="size"
                   name="size"
@@ -261,7 +216,13 @@ export default function ProductDetailPage() {
                         </IconButton>
                       </Box>
                     </Box>
-                    <Box sx={{ display: 'flex', height: 70 }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        height: 70,
+                        justifyContent: 'space-between',
+                      }}
+                    >
                       <Typography variant="span">합계</Typography>
                       <Typography variant="h6">
                         {product.price * quantity}
