@@ -1,12 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Container,
-  Grid,
-  Typography,
-  CssBaseline,
-} from '@mui/material';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 export default function ProductItem({ product }) {
   return (
     <Card sx={{ boxShadow: 0 }}>

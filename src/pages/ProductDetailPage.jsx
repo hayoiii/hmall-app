@@ -18,10 +18,44 @@ import ImageSlider from '../components/ImageSlider.jsx';
 import cookie from 'js-cookie';
 import Alert from '../components/Alert.jsx';
 import ColorOption from '../components/ColorOption.jsx';
+import { styled } from '@mui/system';
 
 //npm install js-cookie
 
 //'/'
+
+const TotalBox = styled(Box)`
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const ButtonContainerBox = styled(Box)`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const AddButton = styled(Button)`
+  &:hover {
+    background-color: black;
+  }
+  margin: 8px;
+  width: 48%;
+  background-color: black;
+  color: white;
+`;
+
+const BuyButton = styled(Button)`
+  &:hover {
+    background-color: darkorange;
+  }
+  width: 48%;
+  background-color: darkorange;
+  color: white;
+`;
 
 const data = {
   id: 0,
@@ -175,8 +209,13 @@ export default function ProductDetailPage() {
                   1. 함수 이름을 넘겨주는 방식 handleClickColor
                   2. 익명 화살표 함수로 호출하는 방식 () => handleClickColor()
                 */}
-                <ColorOption colorImages={product.color_options_image} color={color} onClickColor={handleClickColor} select={product.color_options_text}/>
-                
+                <ColorOption
+                  colorImages={product.color_options_image}
+                  color={color}
+                  onClickColor={handleClickColor}
+                  select={product.color_options_text}
+                />
+
                 <Select
                   id="size"
                   name="size"
@@ -216,55 +255,18 @@ export default function ProductDetailPage() {
                         </IconButton>
                       </Box>
                     </Box>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        height: 70,
-                        justifyContent: 'space-between',
-                      }}
-                    >
+                    <TotalBox>
                       <Typography variant="span">합계</Typography>
                       <Typography variant="h6">
                         {product.price * quantity}
                       </Typography>
-                    </Box>
+                    </TotalBox>
                   </Box>
                 )}
-                <Box
-                  sx={{
-                    Width: '100%',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Button
-                    variant="contained"
-                    sx={{
-                      ':hover': {
-                        bgcolor: 'black',
-                      },
-                      mr: 1,
-                      minWidth: '48%',
-                      bgcolor: 'black',
-                    }}
-                    onClick={handleClickCart}
-                  >
-                    장바구니
-                  </Button>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      ':hover': {
-                        bgcolor: 'darkorange',
-                      },
-                      minWidth: '48%',
-                      bgcolor: 'darkorange',
-                    }}
-                  >
-                    바로구매
-                  </Button>
-                </Box>
+                <ButtonContainerBox>
+                  <AddButton onClick={handleClickCart}>장바구니</AddButton>
+                  <BuyButton>바로구매</BuyButton>
+                </ButtonContainerBox>
               </Box>
             </Box>
             <Box>
