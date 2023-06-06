@@ -2,6 +2,7 @@ import { Container, Typography } from '@mui/material';
 
 import styled from '@emotion/styled';
 import CartList from '../components/CartList';
+import CartPrice from '../components/CartPrice';
 
 const Cart = styled(Typography)`
   font-size: 24px;
@@ -14,6 +15,7 @@ export default function CartPage() {
       <Cart>장바구니</Cart>
 
       <CartList />
+      <CartPrice />
     </Container>
   );
 }

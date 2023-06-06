@@ -9,11 +9,7 @@ import {
   Typography,
   Container,
 } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 import Button from '@mui/material/Button';
-import AddIcon from '@mui/icons-material/Add';
-import MinimizeIcon from '@mui/icons-material/Minimize';
-import DensityLargeIcon from '@mui/icons-material/DensityLarge';
 import CartItem from './CartItem';
 import { useEffect, useState } from 'react';
 import cookie from 'js-cookie';
@@ -107,45 +103,7 @@ export default function CartList() {
         <Button sx={{ bgcolor: 'gray', color: 'black' }}>품절삭제</Button>
       </Box>
 
-      <Box sx={{ border: '1px solid black', mt: '40px', p: '40px' }}>
-        <Box sx={{ display: 'flex' }}>
-          <Box>
-            {' '}
-            <Typography sx={{ fontSize: '14px' }}>상품 금액</Typography>
-            <Typography variant="span" sx={{ fontSize: '28px' }}>
-              0
-            </Typography>
-            <Typography variant="span">원</Typography>
-          </Box>
-          <AddIcon sx={{ display: 'inline-block' }} />
-          <Box>
-            {' '}
-            <Typography sx={{ fontSize: '14px' }}>배송비</Typography>
-            <Typography variant="span" sx={{ fontSize: '28px' }}>
-              0
-            </Typography>
-            <Typography variant="span">원</Typography>
-          </Box>
-          <MinimizeIcon />
-          <Box>
-            {' '}
-            <Typography sx={{ fontSize: '14px' }}>총 할인금액</Typography>
-            <Typography variant="span" sx={{ fontSize: '28px' }}>
-              0
-            </Typography>
-            <Typography variant="span">원</Typography>
-          </Box>
-          <DensityLargeIcon />
-          <Box>
-            {' '}
-            <Typography sx={{ fontSize: '14px' }}>결제금액</Typography>
-            <Typography variant="span" sx={{ fontSize: '28px' }}>
-              0
-            </Typography>
-            <Typography variant="span">원</Typography>
-          </Box>
-        </Box>
-      </Box>
+  
 
       <Box align="center" sx={{ mt: '30px' }}>
         <Button sx={{ bgcolor: 'black', color: 'white', mr: '10px' }}>
