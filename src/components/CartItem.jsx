@@ -13,7 +13,7 @@ const carts = [
     quantity: '1',
   },
 ];
-export default function CartItem({ cartItem, checked, onChange }) {
+export default function CartItem({ cartItem, checked, onChange, onDelete }) {
   return (
     <TableRow>
       <TableCell sx={{ width: '60px' }}>
@@ -39,7 +39,15 @@ export default function CartItem({ cartItem, checked, onChange }) {
       </TableCell>
       <TableCell align="center">{cartItem.price * cartItem.quantity}</TableCell>
       <TableCell sx={{ position: 'relative', width: '15%' }} align="center">
-        <CloseIcon sx={{ position: 'absolute', top: '10px', right: '10px' }} />
+        <CloseIcon
+          sx={{
+            position: 'absolute',
+            top: '10px',
+            right: '10px',
+            cursor: 'pointer',
+          }}
+          onClick={onDelete}
+        />
         <Button sx={{ bgcolor: 'black', color: 'white' }}> 바로구매 </Button>
       </TableCell>
       <TableCell sx={{ width: '15%' }}>

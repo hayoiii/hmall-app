@@ -162,6 +162,7 @@ export default function ProductDetailPage() {
         color: color,
         size: size,
         price: product.price,
+        regularPrice: product.regular_price,
         quantity: quantity,
       };
       // [A, B, C] -> [A, B, C, cartItem]

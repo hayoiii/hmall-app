@@ -19,13 +19,20 @@ export default function CartList() {
   const [carts, setCarts] = useState([]);
   const [checkedList, setCheckedList] = useState([]);
   const [allChecked, setAllChecked] = useState(false);
+  const [checkedCarts, setCheckedCarts] = useState(carts);
 
   // checkedList[i] === true이면 carts[i]는 선택되었다.
+  // try { 예외가 발생하는 코드 } catch(e) { 예외 처리 코드}
   useEffect(() => {
     const cookieValue = cookie.get('cart');
-    const carts = JSON.parse(cookieValue);
-    setCarts(carts);
-    setCheckedList(new Array(carts.length).fill(false));
+    try {
+      const carts = JSON.parse(cookieValue);
+      setCarts(carts);
+      setCheckedList(new Array(carts.length).fill(false));
+    } catch {
+      setCarts([]);
+      setCheckedList([]);
+    }
   }, []);
 
   useEffect(() => {
@@ -33,7 +40,6 @@ export default function CartList() {
     // 2. 그게 아니면, all CheckBox 값을 false로 바꾼다
 
     // Array.includes()
-    console.log('useEffect 실행');
     if (checkedList.includes(false)) {
       setAllChecked(false);
     } else {
@@ -67,6 +73,59 @@ export default function CartList() {
     // setCheckedList(new Array(carts.length).fill(checked))
   };
 
+  useEffect(() => {
+    const checkedCarts = carts.filter((cart, idx) => {
+      if (checkedList[idx]) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    setCheckedCarts(checkedCarts);
+  }, [checkedList, carts]);
+
+  function getTotal(checkedCarts) {
+    // 체크된 상품의 총 금액(regular_price)
+    // checkedList, carts
+
+    // 1. 체크된 carts의 항목을 찾기
+    /* Array.filter((value, index, array) => {
+      필터링하는 조건
+      return true or false
+    }) */
+    // Array.map((value, index, array) => {})
+    // 2. checkedList 안에있는 항목의 price를 모두 합한다.
+
+    let totalRegularlPrice = 0;
+    checkedCarts.map((cart, idx) => {
+      totalRegularlPrice =
+        totalRegularlPrice + cart.regularPrice * cart.quantity;
+    });
+    return totalRegularlPrice;
+  }
+
+  function getDiscountPrice(checkedCarts) {
+    let discountPrice = 0;
+    let totalPrice = 0;
+    // 1. totalRegularPrice - totalPrice
+    // 2. cart.regular_price - cart.price
+    checkedCarts.map((cart, idx) => {
+      totalPrice = totalPrice + cart.price * cart.quantity;
+    });
+    discountPrice = getTotal(checkedCarts) - totalPrice;
+    return discountPrice;
+  }
+
+  const handleClickDelete = (idx) => {
+    // carts의 idx번째 항목을 삭제한다.
+    // Array.splice
+    let cart = [...carts];
+    cart.splice(idx, 1);
+    setCarts(cart);
+
+    // 'cart' 쿠키를 새로운 carts 값으로 업데이트
+    cookie.set('cart', JSON.stringify(cart), { expires: 30 });
+  };
   return (
     <Container>
       <TableContainer>
@@ -93,6 +152,7 @@ export default function CartList() {
                   cartItem={item}
                   checked={checkedList[idx]}
                   onChange={() => handleClickChecked(idx)}
+                  onDelete={() => handleClickDelete(idx)}
                 />
               );
             })}
@@ -107,7 +167,10 @@ export default function CartList() {
         <Button sx={{ bgcolor: 'gray', color: 'black' }}>품절삭제</Button>
       </Box>
 
-      <CartPrice />
+      <CartPrice
+        total={getTotal(checkedCarts)}
+        discountPrice={getDiscountPrice(checkedCarts)}
+      />
 
       <Box align="center" sx={{ mt: '30px' }}>
         <Button sx={{ bgcolor: 'black', color: 'white', mr: '10px' }}>
