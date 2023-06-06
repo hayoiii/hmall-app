@@ -17,18 +17,17 @@ export default function CartItem({ cartItem, checked, onChange }) {
   return (
     <TableRow>
       <TableCell sx={{ width: '60px' }}>
-        <Checkbox checked={checked} onChange={onChange}/>
+        <Checkbox checked={checked} onChange={onChange} />
       </TableCell>
       <TableCell sx={{ width: '40%' }}>
         <Box sx={{ display: 'flex' }}>
-          {/*   <Box sx={{ width: '15%' }}>이미지</Box> */}
           <img src={cartItem.image} width="15%" />
           <Box>
             <Typography>{cartItem.title}</Typography>
             <Typography>{cartItem.item}</Typography>
             <Box sx={{ mb: '40px' }}>
               <Typography variant="span" sx={{ mr: '16px' }}>
-                {cartItem.color} {CartItem.size}
+                {cartItem.color} {cartItem.size}
               </Typography>
               <Typography variant="span">
                 수량 : {cartItem.quantity} 개
@@ -38,7 +37,7 @@ export default function CartItem({ cartItem, checked, onChange }) {
           </Box>
         </Box>
       </TableCell>
-      <TableCell align="center">{cartItem.price *cartItem.quantity}</TableCell>
+      <TableCell align="center">{cartItem.price * cartItem.quantity}</TableCell>
       <TableCell sx={{ position: 'relative', width: '15%' }} align="center">
         <CloseIcon sx={{ position: 'absolute', top: '10px', right: '10px' }} />
         <Button sx={{ bgcolor: 'black', color: 'white' }}> 바로구매 </Button>

@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import CartItem from './CartItem';
 import { useEffect, useState } from 'react';
 import cookie from 'js-cookie';
+import CartPrice from '../components/CartPrice';
 
 export default function CartList() {
   const [carts, setCarts] = useState([]);
@@ -32,12 +33,12 @@ export default function CartList() {
     // 2. 그게 아니면, all CheckBox 값을 false로 바꾼다
 
     // Array.includes()
-    console.log('useEffect 실행')
-      if(checkedList.includes(false)){
-        setAllChecked(false)
-      }else{
-        setAllChecked(true)
-      }
+    console.log('useEffect 실행');
+    if (checkedList.includes(false)) {
+      setAllChecked(false);
+    } else {
+      setAllChecked(true);
+    }
   }, [checkedList]);
 
   const handleClickChecked = (idx) => {
@@ -57,10 +58,10 @@ export default function CartList() {
     const checked = e.target.checked;
     if (checked) {
       setCheckedList(new Array(carts.length).fill(true));
-      setAllChecked(true)
+      setAllChecked(true);
     } else if (!checked) {
       setCheckedList(new Array(carts.length).fill(false));
-      setAllChecked(false)
+      setAllChecked(false);
     }
 
     // setCheckedList(new Array(carts.length).fill(checked))
@@ -74,7 +75,10 @@ export default function CartList() {
           <TableHead>
             <TableRow>
               <TableCell>
-                <Checkbox checked={allChecked} onChange={(e) => handleChangeAllChecked(e)} />
+                <Checkbox
+                  checked={allChecked}
+                  onChange={(e) => handleChangeAllChecked(e)}
+                />
               </TableCell>
               <TableCell align="center">상품정보</TableCell>
               <TableCell align="center">상품금액</TableCell>
@@ -103,7 +107,7 @@ export default function CartList() {
         <Button sx={{ bgcolor: 'gray', color: 'black' }}>품절삭제</Button>
       </Box>
 
-  
+      <CartPrice />
 
       <Box align="center" sx={{ mt: '30px' }}>
         <Button sx={{ bgcolor: 'black', color: 'white', mr: '10px' }}>
