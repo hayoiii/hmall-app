@@ -57,7 +57,7 @@ const BuyButton = styled(Button)`
   color: white;
 `;
 
-const data = {
+export const data = {
   id: 0,
   code: 'GM0122051149916',
   name: '스몰 센터 그래픽 티셔츠',
