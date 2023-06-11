@@ -25,6 +25,7 @@ export default function ColorOption({
   color,
   onClickColor,
   select,
+  handleClickChangedColor,
 }) {
   return (
     <Box>

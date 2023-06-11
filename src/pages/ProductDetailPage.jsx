@@ -10,10 +10,8 @@ import {
   Typography,
   IconButton,
   Button,
-  Dialog,
-  DialogTitle,
 } from '@mui/material';
-import { Check, Close } from '@mui/icons-material';
+import { Close } from '@mui/icons-material';
 import ImageSlider from '../components/ImageSlider.jsx';
 import cookie from 'js-cookie';
 import Alert from '../components/Alert.jsx';
