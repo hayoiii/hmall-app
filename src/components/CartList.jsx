@@ -162,6 +162,23 @@ export default function CartList() {
     setSelectedIndex(idx);
   };
 
+  const handleChangeCookie = (changedColor, changedSize, changedQuantity) => {
+    // 자식 컴포넌트 OptionChange가 쿠키를 변경하고 호출하는 함수
+    // 쿠키를 다시 받아와서 setCarts
+    const optionCookie = cookie.get('cart');
+    const  option= JSON.parse(optionCookie);
+    // option 어레이 중에 selectedIndex 번째 항목을 바꿔준다
+    option[selectedIndex] = {
+      ...option[selectedIndex],
+      color: changedColor,
+      size: changedSize,
+      quantity: changedQuantity,
+    };
+    cookie.set('cart', JSON.stringify(option, { expires: 30 }));
+    setCarts(option);
+    setOpen(false)
+  };
+
   return (
     <Container>
       <OptionChange
@@ -173,6 +190,7 @@ export default function CartList() {
         onClick={() => setOpen(false)}
         size={carts.length === 0 ? undefined : carts[selectedIndex].size}
         color={carts.length === 0 ? undefined : carts[selectedIndex].color}
+        onChangeCookie={handleChangeCookie}
       />
       <TableContainer>
         <Table>

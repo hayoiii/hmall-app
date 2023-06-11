@@ -9,6 +9,7 @@ const Cart = styled(Typography)`
 `;
 
 export default function CartPage() {
+
   return (
     <Container>
       <Cart>장바구니</Cart>
