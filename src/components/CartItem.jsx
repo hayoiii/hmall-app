@@ -13,7 +13,7 @@ const carts = [
     quantity: '1',
   },
 ];
-export default function CartItem({ cartItem, checked, onChange, onDelete, onClick }) {
+export default function CartItem({ cartItem, checked, onChange, onDelete, onChangeOption }) {
   return (
     <TableRow>
       <TableCell sx={{ width: '60px' }}>
@@ -33,7 +33,7 @@ export default function CartItem({ cartItem, checked, onChange, onDelete, onClic
                 수량 : {cartItem.quantity} 개
               </Typography>
             </Box>
-            <Typography onClick={()=>onClick()} >옵션 변경</Typography>
+            <Typography onClick={()=>onChangeOption()} >옵션 변경</Typography>
           </Box>
         </Box>
       </TableCell>
