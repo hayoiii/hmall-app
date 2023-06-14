@@ -16,6 +16,8 @@ export default function CartPage() {
   const [carts, setCarts] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [open, setOpen] = useState(false);
+  //TODO: checkedCarts는 CartPage에서 관리한다
+  const [checkedCarts, setCheckedCarts] = useState(carts);
 
   useEffect(() => {
     const cookieValue = cookie.get('cart');
@@ -122,9 +124,10 @@ export default function CartPage() {
 
       <CartList
         carts={carts}
-        onDeleteItem ={(idx) => handleClickDelete(idx)}
+        checkedCarts={checkedCarts}
+        onDeleteItem={(idx) => handleClickDelete(idx)}
         onChangeOption={(idx) => handleClickOptionChange(idx)}
-        onDeleteCheckedItems={(checkedList)=> handleCheckedDelete(checkedList)}
+        onDeleteCheckedItems={(checkedList) => handleCheckedDelete(checkedList)}
       />
 
       {/* <CartPrice

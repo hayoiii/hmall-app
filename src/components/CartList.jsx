@@ -27,13 +27,18 @@ const DeleteButton = styled(Button)`
   color: black;
   margin-right: 10px;
 `;
-export default function CartList({carts, onDeleteItem, onDeleteCheckedItems, onChangeOption,}) {
-  
+export default function CartList({
+  carts,
+  onDeleteItem,
+  onDeleteCheckedItems,
+  onChangeOption,
+  checkedCarts,
+}) {
   const [checkedList, setCheckedList] = useState([]);
   const [allChecked, setAllChecked] = useState(false);
   //TODO: checkedCarts는 CartPage에서 관리한다
   const [checkedCarts, setCheckedCarts] = useState(carts);
- 
+
   // checkedList[i] === true이면 carts[i]는 선택되었다.
   // try { 예외가 발생하는 코드 } catch(e) { 예외 처리 코드}
   useEffect(() => {
@@ -95,7 +100,6 @@ export default function CartList({carts, onDeleteItem, onDeleteCheckedItems, onC
 
   return (
     <Container>
-      
       <TableContainer>
         <Table>
           <caption></caption>
@@ -135,7 +139,6 @@ export default function CartList({carts, onDeleteItem, onDeleteCheckedItems, onC
         </DeleteButton>
         <DeleteButton>품절삭제</DeleteButton>
       </Box>
-
     </Container>
   );
 }
