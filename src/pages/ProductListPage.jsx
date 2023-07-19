@@ -3,6 +3,7 @@ import Container from '@mui/material/Container';
 import axios from '../api/axios.js';
 import ProductItem from '../components/ProductItem.jsx';
 import { Grid } from '@mui/material';
+import listData from '../list-data.json';
 //'/'
 
 export default function ProductListPage() {
@@ -10,10 +11,12 @@ export default function ProductListPage() {
 
   // async await
   useEffect(() => {
-    axios.get('/products').then((response) => {
-      // response = {status: number, data: {}}
-      setProducts(response.data.products);
-    });
+    const data = listData;
+    setProducts(data.products);
+    // axios.get('/products').then((response) => {
+    //   // response = {status: number, data: {}}
+    //   setProducts(response.data.products);
+    // });
   }, []);
   return (
     <Container maxWidth="lg">

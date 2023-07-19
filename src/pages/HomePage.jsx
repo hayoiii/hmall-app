@@ -1,6 +1,11 @@
 import React from 'react';
+import Header from './Header';
 
 //'/'
 export default function HomePage() {
-  return <>홈 페이지</>;
+  return (
+    <>
+      <Header />홈 페이지
+    </>
+  );
 }

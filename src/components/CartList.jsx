@@ -6,18 +6,12 @@ import {
   TableCell,
   Checkbox,
   Box,
-  Typography,
   Container,
 } from '@mui/material';
 import Button from '@mui/material/Button';
 import CartItem from './CartItem';
 import { useEffect, useState } from 'react';
-import cookie from 'js-cookie';
-import CartPrice from '../components/CartPrice';
 import styled from '@emotion/styled';
-import { check } from 'prettier';
-
-import { data } from '../pages/ProductDetailPage';
 
 const DeleteButton = styled(Button)`
   background-color: gray;
@@ -32,12 +26,10 @@ export default function CartList({
   onDeleteItem,
   onDeleteCheckedItems,
   onChangeOption,
-  checkedCarts,
+  onClickCheckedCarts,
 }) {
   const [checkedList, setCheckedList] = useState([]);
   const [allChecked, setAllChecked] = useState(false);
-  //TODO: checkedCarts는 CartPage에서 관리한다
-  const [checkedCarts, setCheckedCarts] = useState(carts);
 
   // checkedList[i] === true이면 carts[i]는 선택되었다.
   // try { 예외가 발생하는 코드 } catch(e) { 예외 처리 코드}
@@ -72,31 +64,32 @@ export default function CartList({
     let temp = [...checkedList];
     temp[idx] = !checkedList[idx]; // !true === false !false === true
     setCheckedList(temp);
+
+    // CartPage의 핸들러를 호출해서 checkedCarts 업데이트한다.
+    onClickCheckedCarts(temp);
   };
 
   const handleChangeAllChecked = (e) => {
     const checked = e.target.checked;
-    if (checked) {
-      setCheckedList(new Array(carts.length).fill(true));
-      setAllChecked(true);
-    } else if (!checked) {
-      setCheckedList(new Array(carts.length).fill(false));
-      setAllChecked(false);
-    }
+    // const checkedTrue = new Array(carts.length).fill(true)
+    // const checkedFalse = new Array(carts.length).fill(false)
 
-    // setCheckedList(new Array(carts.length).fill(checked))
+    const newCheckedList = new Array(carts.length).fill(checked);
+
+    // if (checked) {
+    //   setCheckedList(newCheckedList);
+    //   setAllChecked(checked);
+    //   onClickCheckedCarts(newCheckedList)
+    // } else if (!checked) {
+    //   setCheckedList(newCheckedList);
+    //   setAllChecked(checked);
+    //   onClickCheckedCarts(newCheckedList)
+    // }
+
+    setCheckedList(newCheckedList);
+    setAllChecked(checked);
+    onClickCheckedCarts(newCheckedList);
   };
-
-  useEffect(() => {
-    const checkedCarts = carts.filter((cart, idx) => {
-      if (checkedList[idx]) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-    setCheckedCarts(checkedCarts);
-  }, [checkedList, carts]);
 
   return (
     <Container>
@@ -122,7 +115,7 @@ export default function CartList({
                 <CartItem
                   key={idx}
                   cartItem={item}
-                  checked={checkedList[idx]}
+                  checked={checkedList[idx] || false}
                   onChange={() => handleClickChecked(idx)}
                   onDelete={() => onDeleteItem(idx)}
                   onChangeOption={() => onChangeOption(idx)}

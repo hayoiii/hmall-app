@@ -3,9 +3,11 @@ import { Container, Typography, Box } from '@mui/material';
 import Button from '@mui/material/Button';
 import styled from '@emotion/styled';
 import CartList from '../components/CartList';
+import CartPrice from '../components/CartPrice';
 import { data } from '../pages/ProductDetailPage';
-import OptionChange from './OptionChange';
+import OptionChange from '../components/OptionChange';
 import cookie from 'js-cookie';
+import { useCallback, useMemo } from 'react';
 
 const Cart = styled(Typography)`
   font-size: 24px;
@@ -29,48 +31,56 @@ export default function CartPage() {
     }
   }, []);
 
-  const handleChangeCookie = (changedColor, changedSize, changedQuantity) => {
-    // 자식 컴포넌트 OptionChange가 쿠키를 변경하고 호출하는 함수
-    // 쿠키를 다시 받아와서 setCarts
-    const optionCookie = cookie.get('cart');
-    const option = JSON.parse(optionCookie);
-    // option 어레이 중에 selectedIndex 번째 항목을 바꿔준다
-    option[selectedIndex] = {
-      ...option[selectedIndex],
-      color: changedColor,
-      size: changedSize,
-      quantity: changedQuantity,
-    };
-    cookie.set('cart', JSON.stringify(option, { expires: 30 }));
-    setCarts(option);
-    setOpen(false);
-  };
-  const handleClickOptionChange = (idx) => {
+  // useCallback(함수, [상태])
+  const handleChangeCookie = useCallback(
+    (changedColor, changedSize, changedQuantity) => {
+      // 자식 컴포넌트 OptionChange가 쿠키를 변경하고 호출하는 함수
+      // 쿠키를 다시 받아와서 setCarts
+      const optionCookie = cookie.get('cart');
+      const option = JSON.parse(optionCookie);
+      // option 어레이 중에 selectedIndex 번째 항목을 바꿔준다
+      option[selectedIndex] = {
+        ...option[selectedIndex],
+        color: changedColor,
+        size: changedSize,
+        quantity: changedQuantity,
+      };
+      cookie.set('cart', JSON.stringify(option, { expires: 30 }));
+      setCarts(option);
+      setOpen(false);
+    },
+    [selectedIndex],
+  );
+  const handleClickOptionChange = useCallback((idx) => {
     setOpen(true);
     setSelectedIndex(idx);
-  };
+  }, []);
 
-  function getTotal(checkedCarts) {
-    // 체크된 상품의 총 금액(regular_price)
-    // checkedList, carts
-
-    // 1. 체크된 carts의 항목을 찾기
-    /* Array.filter((value, index, array) => {
-      필터링하는 조건
-      return true or false
-    }) */
-    // Array.map((value, index, array) => {})
-    // 2. checkedList 안에있는 항목의 price를 모두 합한다.
-
+  // useMemo(함수, [])
+  // () => { return 값 }
+  const total = useMemo(() => {
     let totalRegularlPrice = 0;
     checkedCarts.map((cart, idx) => {
       totalRegularlPrice =
         totalRegularlPrice + cart.regularPrice * cart.quantity;
     });
     return totalRegularlPrice;
-  }
+  }, [checkedCarts]);
 
-  function getDiscountPrice(checkedCarts) {
+  /*   function getTotal(checkedCarts) {
+    // 체크된 상품의 총 금액(regular_price)
+    // checkedList, carts
+
+    // 1. 체크된 carts의 항목을 찾기
+    Array.filter((value, index, array) => {
+      필터링하는 조건
+      return true or false
+    }) 
+    // Array.map((value, index, array) => {})
+    // 2. checkedList 안에있는 항목의 price를 모두 합한다. 
+  }*/
+
+  const discountPrice = useMemo(() => {
     let discountPrice = 0;
     let totalPrice = 0;
     // 1. totalRegularPrice - totalPrice
@@ -78,9 +88,9 @@ export default function CartPage() {
     checkedCarts.map((cart, idx) => {
       totalPrice = totalPrice + cart.price * cart.quantity;
     });
-    discountPrice = getTotal(checkedCarts) - totalPrice;
+    discountPrice = total - totalPrice;
     return discountPrice;
-  }
+  }, [total, checkedCarts]);
 
   const handleClickDelete = (idx) => {
     // carts의 idx번째 항목을 삭제한다.
@@ -107,6 +117,17 @@ export default function CartPage() {
     setCarts(itemStorage);
   };
 
+  const onClickCheckedCarts = (checkedList) => {
+    const checkedCarts = carts.filter((cart, idx) => {
+      if (checkedList[idx]) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    setCheckedCarts(checkedCarts);
+  };
+
   return (
     <Container>
       <OptionChange
@@ -124,16 +145,13 @@ export default function CartPage() {
 
       <CartList
         carts={carts}
-        checkedCarts={checkedCarts}
+        onClickCheckedCarts={onClickCheckedCarts}
         onDeleteItem={(idx) => handleClickDelete(idx)}
         onChangeOption={(idx) => handleClickOptionChange(idx)}
         onDeleteCheckedItems={(checkedList) => handleCheckedDelete(checkedList)}
       />
 
-      {/* <CartPrice
-        total={getTotal(checkedCarts)}
-        discountPrice={getDiscountPrice(checkedCarts)}
-      /> */}
+      <CartPrice total={total} discountPrice={discountPrice} />
 
       <Box align="center" sx={{ mt: '30px' }}>
         <Button sx={{ bgcolor: 'black', color: 'white', mr: '10px' }}>

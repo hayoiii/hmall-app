@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import ColorOption from './ColorOption';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import cookie from 'js-cookie';
 
 export default function OptionChange({
@@ -23,6 +23,8 @@ export default function OptionChange({
   color,
   onChangeCookie,
 }) {
+  const refQuantity = useRef(null);
+
   const [changedQuantity, setChangedQuantity] = useState(quantity);
   const [changedSize, setChangedSize] = useState(size);
   const [changedColor, setChangedColor] = useState(color);
@@ -62,6 +64,16 @@ export default function OptionChange({
     // cookie.set('cart', JSON.stringify(option, { expires: 30 }));
     // onClick();
   };
+
+  useEffect(() => {
+    setTimeout(function () {
+      if (!refQuantity.current) return;
+      if (open === true) {
+        refQuantity.current.focus();
+      }
+    }, 500);
+  }, [open]);
+
   return (
     <Dialog open={open}>
       <Box>
@@ -100,6 +112,7 @@ export default function OptionChange({
             })}
           </Select>
           <TextField
+            inputRef={(ref) => (refQuantity.current = ref)}
             id="num"
             type="number"
             value={changedQuantity}
