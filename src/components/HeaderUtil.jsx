@@ -1,32 +1,32 @@
 import React from 'react';
-import { Box, Container } from '@mui/material';
+import { Box, Container, colors } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/system';
-import Lg from '../img_logo.png';
-
+import ImgLogo from '../assets/img_logo.png'
 const UtilBox = styled('div')({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
 });
+
+const Logo = styled('div')({
+  backgroundImage: `url(${ImgLogo})`
+})
+
 const Nav = styled('ul')({
   display: 'flex',
   listStyle: 'none',
 });
 export default function HeaderUtil() {
-  const utilNav = [
-    {
-      id: 1,
-      title: '찾기',
-    },
-  ];
+  
+
   return (
     <>
-      <Container fixed maxWidth="xl">
+      <Container sx={{backgroundColor:'black', color:'white'}}>
         <UtilBox>
-          <Box>
+          <Logo>
             <Link to="/">H FASHION MALL</Link>
-          </Box>
+          </Logo>
           <Nav>
             <li>찾기</li>
             <li>로그인</li>

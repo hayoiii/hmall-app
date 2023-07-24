@@ -9,6 +9,10 @@ const ColorChip = styled(Box)(({ colorUrl }) => ({
   borderRadius: '50%',
   margin: '16px',
   cursor: 'pointer',
+
+  ':hover': {
+    
+  }
 }));
 
 const CheckIcon = styled(Check)(({}) => ({

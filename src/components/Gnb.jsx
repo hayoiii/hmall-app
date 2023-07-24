@@ -3,10 +3,13 @@ import { Container } from '@mui/material';
 import { styled } from '@mui/system';
 import MainMenu from '../api/Mainmenu.json';
 import SideMenu from '../api/SideMenu.json';
+import SubMenu from '../api/SubMenu.json';
+import { useState } from 'react';
 
 const MenuBox = styled('div')({
   display: 'flex',
   justifyContent: 'space-between',
+  color:'white'
 });
 const MenuList = styled('div')({
   display: 'flex',
@@ -15,8 +18,7 @@ const MenuList = styled('div')({
 
 const MenuTitle = styled('div')({
   fontSize: 14,
-  paddingLeft: 15,
-  paddingRight: 15,
+  marginRight: '8px'
 });
 
 const SubBox = styled('div')({
@@ -28,23 +30,66 @@ const SubMenus = styled('div')({
   fontSize: 14,
 });
 
+const SubMenuList = styled('div')({
+  background:'white',
+  width:'100%',
+  height:340,
+  padding:'10px 80px 30px',
+  display:'flex',
+  flexDirection:'column',
+  flexWrap:'wrap',
+  columnGap: '12px',
+  position:'absolute'
+
+})
 export default function Gnb() {
+  const [mouseEnter, setMouseEnter] = useState();
+  
+  const handleMouseEnter = (menuKey) => {
+    setMouseEnter(menuKey)
+  }
+
   return (
     <>
-      <Container maxWidth="xl" sx={{ pr: 80, pl: 80 }}>
+      <div style={{backgroundColor:'black',height:'20px',top:0, position:'sticky'}}>
         <MenuBox>
           <MenuList>
-            {MainMenu.menuList.map((idx) => {
-              return <MenuTitle key={idx.id}>{idx.title}</MenuTitle>;
-            })}
+            {
+              // [woman, man, kids]
+              Object.keys(MainMenu).map((value, idx)=>{
+                return <MenuTitle onMouseEnter={() => handleMouseEnter(value)} key={idx}>
+                {MainMenu[value].title}
+                </MenuTitle>
+              })
+            }
+            {/* {MainMenu.menuList.map((value, idx) => {
+              return <MenuTitle onMouseEnter={} key={value.id}>{value.title}</MenuTitle>;
+            })} */}
           </MenuList>
+
           <SubBox>
             {SideMenu.SubTitle.map((idx) => {
               return <SubMenus key={idx.id}>{idx.sub}</SubMenus>;
             })}
           </SubBox>
         </MenuBox>
-      </Container>
+        
+        {mouseEnter!== undefined && <SubMenuList>
+          {/* [{id:1, title:'여성 메인'}, {}, {}, ...] */}
+          {SubMenu[mouseEnter].map((value,idx)=>{
+            console.log(value.type)
+            if(value.type==="brand"){
+              return <p style={{color: 'red'}} key={idx}>{value.title}</p>
+            }else{
+              return <p key={idx}>{value.title}</p>
+            }
+            // 브랜드이면 <li style={{color: 'red'}} key={idx}>{value.title}</li>
+            // 카테고리이면 <li key={idx}>{value.title}</li>
+          })
+          }
+          
+        </SubMenuList>}
+      </div>
     </>
   );
 }

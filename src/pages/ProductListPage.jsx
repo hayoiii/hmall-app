@@ -4,6 +4,7 @@ import axios from '../api/axios.js';
 import ProductItem from '../components/ProductItem.jsx';
 import { Grid } from '@mui/material';
 import listData from '../list-data.json';
+import Header from '../pages/Header.jsx'
 //'/'
 
 export default function ProductListPage() {
@@ -20,6 +21,7 @@ export default function ProductListPage() {
   }, []);
   return (
     <Container maxWidth="lg">
+      <Header/>
       {products.length > 0 && (
         <Grid container spacing={1}>
           {products.map((product, idx) => (
