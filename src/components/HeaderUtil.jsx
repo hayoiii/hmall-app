@@ -7,6 +7,8 @@ const UtilBox = styled('div')({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
+  backgroundColor:'black',
+  color:'white'
 });
 
 const Logo = styled('div')({
@@ -22,7 +24,7 @@ export default function HeaderUtil() {
 
   return (
     <>
-      <Container sx={{backgroundColor:'black', color:'white'}}>
+     
         <UtilBox>
           <Logo>
             <Link to="/">H FASHION MALL</Link>
@@ -35,7 +37,7 @@ export default function HeaderUtil() {
             <li>장바구니</li>
           </Nav>
         </UtilBox>
-      </Container>
+      
     </>
   );
 }

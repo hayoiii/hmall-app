@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from '@mui/material';
 import { styled } from '@mui/system';
 import MainMenu from '../api/Mainmenu.json';
 import SideMenu from '../api/SideMenu.json';
@@ -39,7 +38,10 @@ const SubMenuList = styled('div')({
   flexDirection:'column',
   flexWrap:'wrap',
   columnGap: '12px',
-  position:'absolute'
+  position:'absolute',
+
+  fontSize:'13px',
+  color:'#666'
 
 })
 export default function Gnb() {
@@ -79,9 +81,9 @@ export default function Gnb() {
           {SubMenu[mouseEnter].map((value,idx)=>{
             console.log(value.type)
             if(value.type==="brand"){
-              return <p style={{color: 'red'}} key={idx}>{value.title}</p>
+              return <a style={{color: 'red'}} key={idx}>{value.title}</a>
             }else{
-              return <p key={idx}>{value.title}</p>
+              return <a key={idx}>{value.title}</a>
             }
             // 브랜드이면 <li style={{color: 'red'}} key={idx}>{value.title}</li>
             // 카테고리이면 <li key={idx}>{value.title}</li>

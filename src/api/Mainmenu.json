@@ -2,5 +2,9 @@
   "woman": { "id": 1, "title": "여성" },
   "man": { "id": 2, "title": "남성" },
   "kids": { "id": 3, "title": "키즈" },
-  "outlet": { "id": 7, "title": "아울렛" }
+  "lifeStyle":{ "id": 4, "title": "잡화" },
+  "golf": { "id": 6, "title": "골프" },
+  "outlet": { "id": 7, "title": "아울렛" },
+  "Hshop":{ "id": 8, "title": "H SHOP" },
+  "selectshop": { "id": 9, "title": "편집샵" }
 }
