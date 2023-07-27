@@ -4,29 +4,37 @@ import MainMenu from '../api/Mainmenu.json';
 import SideMenu from '../api/SideMenu.json';
 import SubMenu from '../api/SubMenu.json';
 import { useState } from 'react';
+import { Directions } from '@mui/icons-material';
 
 const MenuBox = styled('div')({
   display: 'flex',
   justifyContent: 'space-between',
   color:'white'
 });
-const MenuList = styled('div')({
+const MenuList = styled('a')({
   display: 'flex',
-  maxWidth: 720,
 });
 
 const MenuTitle = styled('div')({
   fontSize: 14,
-  marginRight: '8px'
+  marginRight: '8px',
+  cursor:'pointer',
+  ':hover':{
+    color:"orange"
+  }
+
 });
 
 const SubBox = styled('div')({
   display: 'flex',
 });
 
-const SubMenus = styled('div')({
+const SideMenus = styled('a')({
   display: 'block',
   fontSize: 14,
+  marginLeft:'10px',
+
+  cursor:'pointer'
 });
 
 const SubMenuList = styled('div')({
@@ -42,6 +50,11 @@ const SubMenuList = styled('div')({
 
   fontSize:'13px',
   color:'#666'
+})
+
+const SubTitle = styled('a')({
+  cursor:'pointer',
+  display:'flex',
 
 })
 export default function Gnb() {
@@ -50,7 +63,10 @@ export default function Gnb() {
   const handleMouseEnter = (menuKey) => {
     setMouseEnter(menuKey)
   }
-
+  const handleMouseLeave = () => {
+    setMouseEnter(undefined)
+  }
+      
   return (
     <>
       <div style={{backgroundColor:'black',height:'20px',top:0, position:'sticky'}}>
@@ -71,24 +87,32 @@ export default function Gnb() {
 
           <SubBox>
             {SideMenu.SubTitle.map((idx) => {
-              return <SubMenus key={idx.id}>{idx.sub}</SubMenus>;
+              return <SideMenus key={idx.id}>{idx.sub}</SideMenus>;
             })}
           </SubBox>
         </MenuBox>
         
-        {mouseEnter!== undefined && <SubMenuList>
+        {mouseEnter!== undefined && SubMenu[mouseEnter]!== undefined && <SubMenuList onMouseLeave={handleMouseLeave}>
           {/* [{id:1, title:'여성 메인'}, {}, {}, ...] */}
-          {SubMenu[mouseEnter].map((value,idx)=>{
-            console.log(value.type)
+          <div style={{display:'flex', flexDirection:'column', flexWrap:'wrap', height:"340px"}}>
+            {SubMenu[mouseEnter].map((value,idx)=>{
+              if(value.type==="category" || value.type === undefined){
+                return <SubTitle style={{color: 'red'}} key={idx}>{value.title}</SubTitle>
+              }
+            })
+            } 
+          </div>
+          
+          <div style={{display:'flex', flexDirection:'column', flexWrap:'wrap', height:"340px"}}> 
+            {SubMenu[mouseEnter].map((value,idx)=>{
             if(value.type==="brand"){
-              return <a style={{color: 'red'}} key={idx}>{value.title}</a>
-            }else{
-              return <a key={idx}>{value.title}</a>
+              return <SubTitle key={idx}>{value.title}</SubTitle>
             }
             // 브랜드이면 <li style={{color: 'red'}} key={idx}>{value.title}</li>
             // 카테고리이면 <li key={idx}>{value.title}</li>
           })
-          }
+          }</div>
+         
           
         </SubMenuList>}
       </div>

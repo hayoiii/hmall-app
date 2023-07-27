@@ -3,6 +3,7 @@ import { Box, Container, colors } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/system';
 import ImgLogo from '../assets/img_logo.png'
+
 const UtilBox = styled('div')({
   display: 'flex',
   alignItems: 'center',
@@ -12,7 +13,9 @@ const UtilBox = styled('div')({
 });
 
 const Logo = styled('div')({
-  backgroundImage: `url(${ImgLogo})`
+  backgroundImage: `url(${ImgLogo})`,
+  width: '100px',
+  height: '100px',
 })
 
 const Nav = styled('ul')({
@@ -20,15 +23,13 @@ const Nav = styled('ul')({
   listStyle: 'none',
 });
 export default function HeaderUtil() {
-  
-
   return (
     <>
      
         <UtilBox>
-          <Logo>
-            <Link to="/">H FASHION MALL</Link>
-          </Logo>
+          <Link to="/">
+            <img src={'/assets/img_logo.png'} alt='로고' width='100px' height='100px'/>
+          </Link>
           <Nav>
             <li>찾기</li>
             <li>로그인</li>
