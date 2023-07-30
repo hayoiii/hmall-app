@@ -1,0 +1,12 @@
+{
+"menuList": [
+  { "id": 1, "title": "여성" },
+  { "id": 2, "title": "남성" },
+  { "id": 3, "title": "키즈" },
+  { "id": 4, "title": "잡화" },
+  { "id": 5, "title": "라이프스타일" },
+  { "id": 6, "title": "골프" },
+  { "id": 7, "title": "아울렛" },
+  { "id": 8, "title": "H SHOP" },
+  { "id": 9, "title": "편집샵" }
+]}

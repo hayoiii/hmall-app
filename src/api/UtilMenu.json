@@ -1,0 +1,7 @@
+{
+    "search":{"id":1, "title":"찾기","icon":"" , "url":"/find"},
+    "login":{"id":2, "title":"로그인", "url":"/login"},
+    "join":{"id":3, "title":"회원가입", "url":"/join"},
+    "mypage":{"id":4, "title":"마이페이지", "url":"/mypage"},
+    "shopping":{"id":5, "title":"장바구니", "url":"/cartpage"}
+}
