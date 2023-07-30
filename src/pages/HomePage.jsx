@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import MainSlider from '../components/MainSlider';
-import HomeSlideImages from '../api/HomeSlideImages.json'
+import HomeSlideImages from '../api/HomeSlideData.json'
 
 //'/'
 export default function HomePage() {
