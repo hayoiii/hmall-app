@@ -3,10 +3,10 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { Translate } from '@mui/icons-material';
 import breakLine from '../utils/breakLine';
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { useRef } from 'react';
 
 const IMAGE_WIDTH = 1164;
 const IMAGE_HEIGHT = 720;
@@ -47,14 +47,14 @@ const ImageSubTitle = styled('p')(({
 export default function MainSlider({images}) {
     const [currentIdx, setCurrentIdx] = useState(0);
     const [autoPlay, setAutoPlay] = useState(true);
-    const [timer, setTimer] = useState(null);
-    
+    // const [timer, setTimer] = useState(null);
+    const refTimer = useRef(null);
   
     useEffect(()=>{
-      if(autoPlay === true && timer === null){
+      if(autoPlay === true && refTimer.current === null){
         // 2초마다 currentIdx를 1 증가시킨다.
         // 0, 1, ..., images.length - 1
-        const timer = setInterval(() => {
+        const newTimer = setInterval(() => {
           const lastIndex = images.length - 1;
           setCurrentIdx(prev => {
             if(prev >= lastIndex) {
@@ -62,12 +62,13 @@ export default function MainSlider({images}) {
             }
             return prev + 1
           })}, 3 * 1000)
-        setTimer(timer)
-      } else {
+        refTimer.current = newTimer
+      } else if(autoPlay === false) {
         // 타이머를 취소한다
-        clearInterval(timer)
+        clearInterval(refTimer.current)
+        refTimer.current = null;
       }
-    },[timer, autoPlay, currentIdx, images.length])
+    },[autoPlay, images.length])
     
     const handleClickArrow = (isBack) => {
       //boolean -> true / false
