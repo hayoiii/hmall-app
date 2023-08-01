@@ -1,0 +1,207 @@
+[
+  {
+    "keyword": "원피스",
+    "products": [
+      {
+        "code": "GM0123032878001",
+        "name": "엘리아나 드레스",
+        "brand_name": "CLUB MONACO WOMEN",
+        "price": "208600",
+        "regular_price": "208600",
+        "image": "https://cdn.hfashionmall.com//goods/CMBR/23/03/28/GM0123032878001_1_ORGINL_1679987389470.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123051196294",
+        "name": "슬리브리스 플레어 드레스",
+        "brand_name": "CLUB MONACO WOMEN",
+        "price": "292600",
+        "regular_price": "292600",
+        "image": "https://cdn.hfashionmall.com//goods/CMBR/23/05/11/GM0123051196294_1_ORGINL_1683784460829.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123051196293",
+        "name": "슬리브리스 플레어 드레스",
+        "brand_name": "CLUB MONACO WOMEN",
+        "price": "292600",
+        "regular_price": "292600",
+        "image": "https://cdn.hfashionmall.com//goods/CMBR/23/05/11/GM0123051196293_1_ORGINL_1683784458371.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123053003192",
+        "name": "코튼 믹스 하프 슬리브 드레스",
+        "brand_name": "ck Calvin Klein WOMEN",
+        "price": "498000",
+        "regular_price": "498000",
+        "image": "https://cdn.hfashionmall.com//goods/CKBR/23/05/30/GM0123053003192_1_ORGINL_1685433727816.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      }
+    ]
+  },
+  {
+    "keyword": "티셔츠",
+    "products": [
+      {
+        "code": "GM0123032978839",
+        "name": "아카이브 힐피거 로고 티셔츠",
+        "brand_name": "TOMMY HILFIGER MEN",
+        "price": "90300",
+        "regular_price": "90300",
+        "image": "https://cdn.hfashionmall.com//goods/THBR/23/03/29/GM0123032978839_1_ORGINL_1680081640137.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123011129097",
+        "name": "아카이브 힐피거 로고 티셔츠",
+        "brand_name": "TOMMY HILFIGER MEN",
+        "price": "90300",
+        "regular_price": "90300",
+        "image": "https://cdn.hfashionmall.com//goods/THBR/23/01/11/GM0123011129097_1_ORGINL_1673423322388.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123071216324",
+        "name": "새틀라이트 티셔츠",
+        "brand_name": "MOOSE KNUCKLES",
+        "price": "198000",
+        "regular_price": "198000",
+        "image": "https://cdn.hfashionmall.com//goods/HFBR/23/07/12/GM0123071216324_1_ORGINL_1689148703771.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123071416947",
+        "name": "새틀라이트 티셔츠",
+        "brand_name": "MOOSE KNUCKLES",
+        "price": "198000",
+        "regular_price": "198000",
+        "image": "https://cdn.hfashionmall.com//goods/HFBR/23/07/14/GM0123071416947_1_ORGINL_1689317721929.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      }
+    ]
+  },
+  {
+    "keyword": "린넨",
+    "products": [
+      {
+        "code": "GM0123022864154",
+        "name": "프리미엄 린넨 셔츠",
+        "brand_name": "TOMMY HILFIGER MEN",
+        "price": "153300",
+        "regular_price": "153300",
+        "image": "https://cdn.hfashionmall.com//goods/THBR/23/02/28/GM0123022864154_1_ORGINL_1677578535543.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123022864149",
+        "name": "프리미엄 린넨 셔츠",
+        "brand_name": "TOMMY HILFIGER MEN",
+        "price": "153300",
+        "regular_price": "153300",
+        "image": "https://cdn.hfashionmall.com//goods/THBR/23/02/28/GM0123022864149_1_ORGINL_1677578540983.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123051196284",
+        "name": "린넨 스트라이프 티셔츠",
+        "brand_name": "CLUB MONACO WOMEN",
+        "price": "158000",
+        "regular_price": "158000",
+        "image": "https://cdn.hfashionmall.com//goods/CMBR/23/05/11/GM0123051196284_1_ORGINL_1683784469176.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123051196285",
+        "name": "린넨 스트라이프 티셔츠",
+        "brand_name": "CLUB MONACO WOMEN",
+        "price": "158000",
+        "regular_price": "158000",
+        "image": "https://cdn.hfashionmall.com//goods/CMBR/23/05/11/GM0123051196285_1_ORGINL_1683784472020.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      }
+    ]
+  },
+  {
+    "keyword": "샌들",
+    "products": [
+      {
+        "code": "GM0123020938494",
+        "name": "플로이드 비치 샌들",
+        "brand_name": "TOMMY SHOES",
+        "price": "47200",
+        "regular_price": "47200",
+        "image": "https://cdn.hfashionmall.com//goods/THBR/23/02/09/GM0123020938494_1_ORGINL_1676271465047.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123020938493",
+        "name": "플로이드 비치 샌들",
+        "brand_name": "TOMMY SHOES",
+        "price": "47200",
+        "regular_price": "47200",
+        "image": "https://cdn.hfashionmall.com//goods/THBR/23/02/09/GM0123020938493_1_ORGINL_1676271463445.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123033180834",
+        "name": "로라 플리플랍",
+        "brand_name": "TOMMY SHOES",
+        "price": "39200",
+        "regular_price": "39200",
+        "image": "https://cdn.hfashionmall.com//goods/THBR/23/03/31/GM0123033180834_1_ORGINL_1680485193530.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123033180836",
+        "name": "로라 플리플랍",
+        "brand_name": "TOMMY SHOES",
+        "price": "39200",
+        "regular_price": "39200",
+        "image": "https://cdn.hfashionmall.com//goods/THBR/23/03/31/GM0123033180836_1_ORGINL_1680485195213.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      }
+    ]
+  },
+  {
+    "keyword": "반바지",
+    "products": [
+      {
+        "code": "GM0123052502044",
+        "name": "밴딩  숏 팬츠",
+        "brand_name": "ck Calvin Klein MEN",
+        "price": "99000",
+        "regular_price": "99000",
+        "image": "https://cdn.hfashionmall.com//goods/CKBR/23/05/25/GM0123052502044_1_ORGINL_1685003815308.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123052502043",
+        "name": "밴딩  숏 팬츠",
+        "brand_name": "ck Calvin Klein MEN",
+        "price": "99000",
+        "regular_price": "99000",
+        "image": "https://cdn.hfashionmall.com//goods/CKBR/23/05/25/GM0123052502043_1_ORGINL_1685003811556.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123071717338",
+        "name": "스웨이드 윙클 스커트",
+        "brand_name": "DKNY WOMEN",
+        "price": "235000",
+        "regular_price": "235000",
+        "image": "https://cdn.hfashionmall.com//goods/DKBR/23/07/17/GM0123071717338_1_ORGINL_1689582427677.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      },
+      {
+        "code": "GM0123071717337",
+        "name": "스웨이드 윙클 스커트",
+        "brand_name": "DKNY WOMEN",
+        "price": "235000",
+        "regular_price": "235000",
+        "image": "https://cdn.hfashionmall.com//goods/DKBR/23/07/17/GM0123071717337_1_ORGINL_1689582424033.jpg?RS=180x180&AR=0&CS=120x180",
+        "created_at": "2023-07-30T10:01:01.373Z"
+      }
+    ]
+  }
+]
