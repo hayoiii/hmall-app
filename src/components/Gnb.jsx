@@ -4,11 +4,12 @@ import MainMenu from '../api/Mainmenu.json';
 import SideMenu from '../api/SideMenu.json';
 import SubMenu from '../api/SubMenu.json';
 import { useState } from 'react';
-import { Directions } from '@mui/icons-material';
 
 const MenuBox = styled('div')({
+  height:'60px',
   display: 'flex',
   justifyContent: 'space-between',
+  
   color:'white'
 });
 const MenuList = styled('a')({
@@ -69,7 +70,7 @@ export default function Gnb() {
       
   return (
     <>
-      <div style={{backgroundColor:'black',height:'20px',top:0, position:'sticky'}}>
+      <div style={{backgroundColor:'black',top:0, position:'sticky',zIndex:10,}}>
         <MenuBox>
           <MenuList>
             {

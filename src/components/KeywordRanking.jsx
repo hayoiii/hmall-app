@@ -6,9 +6,7 @@ import { useEffect, useRef } from 'react';
 
 const Keyword = styled('a')({
     padding:'25px 0',
-    display:'block',
-    
-    
+    display:'block',    
 })
 
 const CategoryBox = styled('div')({
@@ -34,7 +32,7 @@ const BrandName = styled('figcaption')({
     zIndex:1,
     color:'white',
 
-    width:'120px'
+    width:'120px',
 })
 
 const ProductImage = styled('img')({
@@ -70,36 +68,53 @@ export default function KeywordRanking(){
   }
 
     return(
-      <Box style={{width:'535px'}}>
-        <ol style={{position:'relative'}}>
-            KEYWORD RANKING
-            {rankingData.map((keyword, idx)=> {
-                return(
-                <li key={idx} style={{listStyle:'none', borderBottom:'1px solid black'}}>
-                  <Keyword>
-                    <span style={{marginRight:'20px'}}>{idx+1}</span>
-                    {keyword.keyword}
-                    {/* 해당 인덱스가 rankingIdx 같다면 opacity:1 아니면 0
-                    Idx === rankingIdx ? {'opacity': 1} : {'opacity':0}
-                    ...{'opacity': Idx === rankingIdx ? 1 : 0 }
-                    */}
-                    <span style={{position:'absolute', right:'0', ...{'opacity': idx === rankingIdx ? 1 : 0 }}}>더보기</span>
-                  </Keyword>
-                  <CategoryBox style={rankingIdx === idx ? activeRangking : undefined}> 
-                    {keyword.products.map((product, idx)=>{
-                      return (
-                        <Category style={rankingIdx === idx ? activeRangking : undefined} key={idx}> 
-                          <BrandName>{product.brand_name}</BrandName>
-                          <ProductImage src={product.image}/>
-                        </Category>
-                      )
-                    })}
-                  </CategoryBox>
-               
-                </li>)
-            })}
-        </ol>
-
+      <Box sx={{'display':'flex', 'alignItems':'center'}}>
+        <Box style={{width:'535px',marginRight:'30px'}}>
+          <ol style={{position:'relative'}}>
+              <h2 style={{'lineHeight':'50px', 'fontSize':'54px', 'wordBreak':'break-word'}}>KEYWORD RANKING</h2>
+              {rankingData.map((keyword, idx)=> {
+                  return(
+                  <li key={idx} style={{listStyle:'none', borderBottom:'1px solid black'}}>
+                    <Keyword>
+                      <span style={{marginRight:'20px'}}>{idx+1}</span>
+                      {keyword.keyword}
+                      {/* 해당 인덱스가 rankingIdx 같다면 opacity:1 아니면 0
+                      Idx === rankingIdx ? {'opacity': 1} : {'opacity':0}
+                      ...{'opacity': Idx === rankingIdx ? 1 : 0 }
+                      */}
+                      <span style={{position:'absolute', right:'0',color:'orange', ...{'opacity': idx === rankingIdx ? 1 : 0 }}}>더보기</span>
+                    </Keyword>
+                    <CategoryBox style={rankingIdx === idx ? activeRangking : undefined}> 
+                      {keyword.products.map((product, idx)=>{
+                        return (
+                          <Category style={rankingIdx === idx ? activeRangking : undefined} key={idx}> 
+                            
+                            <ProductImage src={product.image}/>
+                            <BrandName>{product.brand_name}</BrandName>
+                            
+                          </Category>
+                        )
+                      })}
+                    </CategoryBox>
+                
+                  </li>)
+              })}
+          </ol>
+        </Box>
+           <Box sx={{'display':'flex'}}>
+            {/* 일단 모양만.. */}
+            <div>
+              <div style={{backgroundColor:'gray', width:'452px',height:'678px', }}></div>            
+            </div>
+            <div style={{display:'flex', flexWrap:'wrap', gap:'8px', marginLeft:'8px'}}>
+              <div style={{width:'225px', height:'335px', backgroundColor:'gray'}}></div>
+              <div style={{width:'225px', height:'335px', backgroundColor:'gray'}}></div>
+              <div style={{width:'225px', height:'335px', backgroundColor:'gray'}}>깔끔한 서머룩<span style={{display:'block'}}>연출하기</span></div>
+              <div style={{width:'225px', height:'335px', backgroundColor:'gray'}}></div>
+            </div>
+            
+           </Box>
       </Box>
+     
     )
 }

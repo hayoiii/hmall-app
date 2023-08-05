@@ -5,6 +5,7 @@ import { styled } from '@mui/system';
 import ImgLogo from '../assets/img_logo.png'
 
 const UtilBox = styled('div')({
+
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
