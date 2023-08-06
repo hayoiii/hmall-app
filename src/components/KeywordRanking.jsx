@@ -3,14 +3,16 @@ import rankingData from '../api/KeywordRanking.json'
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import { useEffect, useRef } from 'react';
+import RecommendList from './RecommendList';
 
 const Keyword = styled('a')({
     padding:'25px 0',
     display:'block',    
+    zIndex: 10,
 })
 
 const CategoryBox = styled('div')({
-  position:'relative',
+
     display:'flex',
     columnGap:'5px',
     transition:'all 1s ease',
@@ -21,8 +23,8 @@ const CategoryBox = styled('div')({
 
 const Category = styled('figure')({
     margin:0,
-    height:0,
-    transition:'all 1s ease',
+    height: '180px',
+    position:'relative',
 })
 
 const BrandName = styled('figcaption')({
@@ -87,7 +89,7 @@ export default function KeywordRanking(){
                     <CategoryBox style={rankingIdx === idx ? activeRangking : undefined}> 
                       {keyword.products.map((product, idx)=>{
                         return (
-                          <Category style={rankingIdx === idx ? activeRangking : undefined} key={idx}> 
+                          <Category key={idx}> 
                             
                             <ProductImage src={product.image}/>
                             <BrandName>{product.brand_name}</BrandName>
@@ -101,19 +103,7 @@ export default function KeywordRanking(){
               })}
           </ol>
         </Box>
-           <Box sx={{'display':'flex'}}>
-            {/* 일단 모양만.. */}
-            <div>
-              <div style={{backgroundColor:'gray', width:'452px',height:'678px', }}></div>            
-            </div>
-            <div style={{display:'flex', flexWrap:'wrap', gap:'8px', marginLeft:'8px'}}>
-              <div style={{width:'225px', height:'335px', backgroundColor:'gray'}}></div>
-              <div style={{width:'225px', height:'335px', backgroundColor:'gray'}}></div>
-              <div style={{width:'225px', height:'335px', backgroundColor:'gray'}}>깔끔한 서머룩<span style={{display:'block'}}>연출하기</span></div>
-              <div style={{width:'225px', height:'335px', backgroundColor:'gray'}}></div>
-            </div>
-            
-           </Box>
+           <RecommendList/>
       </Box>
      
     )
