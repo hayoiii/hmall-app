@@ -10,12 +10,10 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 const IMAGE_WIDTH = 696;
 
 const StyleSlideBox = styled('div')({
-    width:IMAGE_WIDTH+'px',
+    width:'100%',
     height:'730px',
 
     display:'flex',
-    overflow:'hidden',
-
     transition:'all 1s ease'
 })
 
@@ -37,9 +35,11 @@ const IconBox = styled('div')({
 })
 
 export default function StyleSlider(){
-    const [currentIdx, setCurrentIdx]=useState(0);
+    const [currentIdx, setCurrentIdx]=useState(1);
     const refTimer = useRef(null);
+    const refSlideBox = useRef(null);
     const [autoPlay, setAutoPlay]=useState(true)
+    // const [unsetTransition, setUnsetTransition] = useState(false)
 
     useEffect(()=>{
       if(autoPlay === true && refTimer.current === null){
@@ -58,13 +58,31 @@ export default function StyleSlider(){
       }
     },[autoPlay])
 
+    const carouselLoop = () => {
+        refSlideBox.current.style.transition = 'unset'
+        const lastIdx = StyleSlideData.length - 1
+        if(currentIdx === 0) {
+            setCurrentIdx(lastIdx)
+        } else if(currentIdx === lastIdx + 1) {
+            setCurrentIdx(1)
+        }
+    }
+    // currentIdx === 0 이거나, lastIdx+1 일 때'마다' 호출한다
+    useEffect(()=>{
+        const lastIdx = StyleSlideData.length - 1
+        if(currentIdx === 0 || currentIdx === lastIdx + 1) {
+            setTimeout(() => {carouselLoop()}, 1000) 
+        } else if (currentIdx === lastIdx || currentIdx === 1) {
+            // carouselLoop 안에서 currentIdx가 바뀌었을 때
+            // currentIdx가 lastIdx 또는 1로 바뀌었을 때
+            refSlideBox.current.style.transition = ''
+        }
+    },[currentIdx])
+
     const handleClickArrow = (isBack) => {
         if(isBack){
-            if(currentIdx === 0 )return;
             setCurrentIdx(currentIdx - 1)
-        }else if(!isBack){
-            const lastIdx = StyleSlideData.length - 1
-            if(currentIdx >= lastIdx) return
+        } else if(!isBack){
             setCurrentIdx(currentIdx + 1)
         }
     }
@@ -75,6 +93,8 @@ export default function StyleSlider(){
 
     return(
         <Box sx={{'display':'flex', 'padding':'0 80px'}}>
+            <p>currentIdx: {currentIdx}</p>
+
             <StyleBox>
                 <Box sx={{'display':'flex','justifyContent':'space-between', 'cursor':'pointer'}}>
                     <span>STYLE</span>
@@ -94,17 +114,19 @@ export default function StyleSlider(){
                 <img src="https://cdn.hfashionmall.com/display/trnd/40/6340/6340_KOR_20230713100844.jpg?RS=430" style={{'width':'430px', 'height':'430px'}} />
                 <p>자연과 내가 온전히 하나 되는 순간.</p>
             </StyleBox>
-            <StyleSlideBox>
-                <ImageBox src={StyleSlideData[StyleSlideData.length - 1]}  />
-                            {/* 마지막 사진 보여주기 */}
-                {StyleSlideData.map((image, idx)=>{
-                    return <ImageBox key={idx} src={image} style={{
-                        transition:'1s transform ease-in-out',
-                        transform:`translateX(${-IMAGE_WIDTH * currentIdx}px)`}}/>
-                })}
-                <ImageBox src={StyleSlideData[0]}/>
-            </StyleSlideBox>
-
+            <Box sx={{ overflow: 'hidden' }}>
+                <StyleSlideBox ref={refSlideBox} style={{ 
+                    transform:`translateX(${-IMAGE_WIDTH * currentIdx}px)`, 
+                    // ...( unsetTransition === true && {transition: 'unset'}),
+                }}>
+                    <ImageBox src={StyleSlideData[StyleSlideData.length - 1]}  />
+                                {/* 마지막 사진 보여주기 */}
+                    {StyleSlideData.map((image, idx)=>{
+                        return <ImageBox key={idx} src={image} />
+                    })}
+                    <ImageBox src={StyleSlideData[0]}/>
+                </StyleSlideBox>
+            </Box>
         </Box>
     
         )
