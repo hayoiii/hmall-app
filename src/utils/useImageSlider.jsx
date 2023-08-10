@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef} from 'react';
 export default function useImageSlider({length, isAutoPlay}) {
+  
     const [currentIdx, setCurrentIdx] = useState(0);
     const [autoPlay, setAutoPlay] = useState(isAutoPlay); 
     const refTimer = useRef(null);

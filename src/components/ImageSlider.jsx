@@ -72,7 +72,7 @@ export default function ImageSlider({ images }) {
               sx={{
                 width: 10,
                 height: 10,
-                backgroundColor: idx === currentIdx ? 'pink' : 'blue',
+                backgroundColor: idx === currentIdx ? 'gray' : 'orange',
                 borderRadius: '50%',
                 ml: 1,
                 cursor: 'pointer',

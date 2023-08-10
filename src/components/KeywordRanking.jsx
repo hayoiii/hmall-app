@@ -70,7 +70,7 @@ export default function KeywordRanking(){
   }
 
     return(
-      <Box sx={{'display':'flex', 'alignItems':'center'}}>
+      <Box sx={{'display':'flex', 'alignItems':'center', 'marginTop':'100px'}}>
         <Box style={{width:'535px',marginRight:'30px'}}>
           <ol style={{position:'relative'}}>
               <h2 style={{'lineHeight':'50px', 'fontSize':'54px', 'wordBreak':'break-word'}}>KEYWORD RANKING</h2>

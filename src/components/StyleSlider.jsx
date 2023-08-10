@@ -92,7 +92,7 @@ export default function StyleSlider(){
     }
 
     return(
-        <Box sx={{'display':'flex', 'padding':'0 80px'}}>
+        <Box sx={{'display':'flex', 'padding':'0 80px', 'marginTop':'100px'}}>
             <p>currentIdx: {currentIdx}</p>
 
             <StyleBox>
