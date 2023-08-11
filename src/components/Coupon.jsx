@@ -3,7 +3,6 @@ import { WidthFull } from '@mui/icons-material';
 import { Box } from '@mui/material';
 
 const CouponBox = styled('div')({
-
     display:'flex',
     padding:'0 80px',
     marginTop:'100px',
