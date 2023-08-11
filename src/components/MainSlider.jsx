@@ -45,8 +45,28 @@ const ImageSubTitle = styled('p')(({
   transition:'all .5s ease'
 }))
 
+function ImageBox({idx, currentIdx, image, activeStyle }) {
+
+  return (
+    <Box key={idx} sx={{position:'relative'}}>
+      <TitleBox>
+          <ImageSubTitle style={currentIdx === idx? activeStyle : undefined}>{image.type}</ImageSubTitle>
+          <ImageTitle style={currentIdx === idx ? activeStyle : undefined}>{breakLine(image.title)}</ImageTitle>
+          <ImageSubTitle style={currentIdx === idx? activeStyle : undefined}>{image.subTitle}</ImageSubTitle>
+      </TitleBox>
+      <Box
+        component={'img'}
+        src={image.src}
+        width={IMAGE_WIDTH}
+        height={IMAGE_HEIGHT}
+        sx={{padding:'0 10px'}}
+      />
+    </Box>
+  )
+}
+
 export default function MainSlider({images}) {
-    const {handleClickArrow, currentIdx, setCurrentIdx,autoPlay,setAutoPlay} = useImageSlider({length: images.length, isAutoPlay:true})
+    const {handleClickArrow, currentIdx, setCurrentIdx,autoPlay,setAutoPlay,style} = useImageSlider({length: images.length, isAutoPlay:true, imageWidth:IMAGE_WIDTH})
   
     const handleClickIndicator = (idx) => {
       // currentIdx를 클릭한 idx로 바꿔준다
@@ -84,33 +104,30 @@ export default function MainSlider({images}) {
                 p: 0,
                 display: 'flex',
                 listStyle: 'none',
-                transform: `translateX(${calculateTranslateX()})`,
-                transition: '1s transform ease-in-out',
+                ...style
+                // transform: `translateX(${calculateTranslateX()})`,
+                // transition: '1s transform ease-in-out',
               }}
               width={'100vw'}
               height={IMAGE_HEIGHT}
             >
               {/* images = ['src1', 'src2', ...] */}
               {/* images = [{src: 'src1'}, {src: 'src2'}, ...] */}
+              {/* images[0] images[1] */}
+              <ImageBox idx={0} currentIdx={currentIdx} image={images[images.length - 1]} activeStyle={activeStyle}/>
               {images.map((image, idx) => {
                 return (
-                  <Box key={idx} sx={{position:'relative'}}>
-                   
-                    <TitleBox>
-                      <ImageSubTitle style={currentIdx === idx? activeStyle : undefined}>{image.type}</ImageSubTitle>
-                      <ImageTitle style={currentIdx === idx ? activeStyle : undefined}>{breakLine(image.title)}</ImageTitle>
-                      <ImageSubTitle style={currentIdx === idx? activeStyle : undefined}>{image.subTitle}</ImageSubTitle>
-                     </TitleBox>
-                    <Box
-                      component={'img'}
-                      src={image.src}
-                      width={IMAGE_WIDTH}
-                      height={IMAGE_HEIGHT}
-                      sx={{padding:'0 10px'}}
-                    />
-                  </Box>
+                  <ImageBox 
+                    key={idx + 1}
+                    idx={idx + 1}
+                    currentIdx={currentIdx}
+                    image={image}
+                    activeStyle={activeStyle}
+                   />
                 );
               })}
+              <ImageBox idx={images.length + 2} currentIdx={currentIdx}
+              image={images[0]} activeStyle={activeStyle}/>
             </Box>
           </Box>
           <IconButton sx={{...buttonStyle,right:0, }} onClick={() => handleClickArrow(false)}>

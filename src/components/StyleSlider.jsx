@@ -1,11 +1,10 @@
-import { useState } from "react"
 import StyleSlideData from '../api/StyleSlideData.json'
 import { Box, IconButton, styled } from "@mui/material";
-import { useEffect, useRef } from "react";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import useImageSlider from "../utils/useImageSlider";
 
 const IMAGE_WIDTH = 696;
 
@@ -35,77 +34,9 @@ const IconBox = styled('div')({
 })
 
 export default function StyleSlider(){
-    const [currentIdx, setCurrentIdx]=useState(1);
-    const refTimer = useRef(null);
-    const refSlideBox = useRef(null);
-    const [autoPlay, setAutoPlay]=useState(true)
-    const [style, setStyle]=useState({
-        transform: `translateX(${-IMAGE_WIDTH * currentIdx}px)`, 
-        transition:'all 1s ease'
-    })
+    const {handleClickArrow, currentIdx, autoPlay, setAutoPlay, style} = useImageSlider({length:StyleSlideData.length, isAutoPlay:true, imageWidth:IMAGE_WIDTH})
     // const [unsetTransition, setUnsetTransition] = useState(false)
 
-    useEffect(()=>{
-      if(autoPlay === true && refTimer.current === null){
-          const slideTimer = setInterval(()=> next(),3000)
-          refTimer.current = slideTimer
-      }else if(autoPlay === false) {
-        clearInterval(refTimer.current)
-        refTimer.current = null;
-      }
-    },[autoPlay])
-
-    const carouselLoop = () => {
-        const lastIdx = StyleSlideData.length - 1
-        if(currentIdx === 0) {
-            setCurrentIdx(lastIdx + 1)
-            setTimeout(() => setStyle({
-                transform: `translateX(${-IMAGE_WIDTH * (lastIdx + 1)}px)`, 
-                transition:'unset'
-            }), 1100)
-        } else if(currentIdx === lastIdx + 2) {
-            setCurrentIdx(1)
-            setTimeout(() => setStyle({
-                transform: `translateX(${-IMAGE_WIDTH * 1 }px)`, 
-                transition:'unset'
-            }), 1100)
-        }
-    }
-    // currentIdx === 0 이거나, lastIdx+1 일 때'마다' 호출한다
-    useEffect(()=>{
-        const lastIdx = StyleSlideData.length - 1
-        if(currentIdx === 0 || currentIdx === lastIdx + 2) {
-            carouselLoop()
-        }
-    },[currentIdx])
-
-    const back = () => {
-        setCurrentIdx((prev) => {
-            setStyle({
-                transform: `translateX(${-IMAGE_WIDTH * (prev - 1)}px)`, 
-                transition:'all 1s ease'
-            })
-            return prev - 1
-        })
-    }
-
-    const next = () => {
-        setCurrentIdx((prev)=>{
-            setStyle({
-                transform: `translateX(${-IMAGE_WIDTH * (prev + 1)}px)`, 
-                transition:'all 1s ease'
-            })
-            return prev + 1
-        })
-    }
-
-    const handleClickArrow = (isBack) => {
-        if(isBack){
-            back()
-        } else if(!isBack){
-            next()
-        }
-    }
     
     const handleClickPlay = () => {
         setAutoPlay(!autoPlay)
@@ -135,7 +66,7 @@ export default function StyleSlider(){
                 <p>자연과 내가 온전히 하나 되는 순간.</p>
             </StyleBox>
             <Box sx={{ overflow: 'hidden', minWidth: IMAGE_WIDTH, maxWidth: IMAGE_WIDTH }}>
-                <StyleSlideBox ref={refSlideBox} style={style}>
+                <StyleSlideBox style={style}>
                     <ImageBox src={StyleSlideData[StyleSlideData.length - 1]}  />
                                 {/* 마지막 사진 보여주기 */}
                     {StyleSlideData.map((image, idx)=>{
