@@ -1,0 +1,64 @@
+[
+    {
+        "brand":"TOMMY HILFIGER",
+        "products":[
+            {
+                "src":"https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172434_252_KOR_20230817133928.jpg?RS=850",
+                "brand":"TOMMY HILFIGER WOMEN",
+                "title":"23 FALL \n NEW-IN",
+                "subTitle":"뉴 시즌 타미힐피거 클래식 아이템"   
+            }
+            ,{
+                "src": "https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172434_255_KOR_20230817134301.jpg?RS=850",
+                "brand":"TOMMY HILFIGER MEN",
+                "title":"SUPER \n SUMMER SALE",
+                "subTitle":"시즌 오프 할인율 추가! 최대 46%"   
+            } ,{
+                "src":"https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172434_253_KOR_20230817134020.jpg?RS=850",
+                "brand":"TOMMY HILFIGER KIDS",
+                "title":"지금 사야 \n  하는 꿀템",
+                "subTitle":"UP TO 49% OFF + 추가 혜택! 여름 라스트 쇼핑찬스"   
+            }
+            ,{
+                "src":"https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172434_254_KOR_20230817134101.jpg?RS=850",
+                "brand":"TOMMY JEANS",
+                "title":"THIS IS  \n MY NEW STYLE",
+                "subTitle":"23P/F TOMMY JEANS LOOK-BOOK"   
+            }   ,{
+                "src":"https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172434_256_KOR_20230817134455.jpg?RS=850",
+                "brand":"TOMMY SHOES",
+                "title":"TOMMY \n -CORE SHOES",
+                "subTitle":"타미 시그니처 디자인이 담긴 슈즈 큐레이션"   
+            }
+        ]
+    },
+    {
+        "brand":"ck Calvin Klein",
+        "products":[
+            {
+                "src":"https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172436_151_KOR_20230817135407.jpg?RS=850",
+                "brand":"ck Calvin Klein WOMEN",
+                "title":"다시 없을 \n 마지막 혜택",
+                "subTitle":"클릭 후 할인 상품 득템!"   
+            }
+            ,{
+                "src": "https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172436_152_KOR_20230817135627.jpg?RS=850",
+                "brand":"ck Calvin Klein MEN",
+                "title":"FINAL \n SALE",
+                "subTitle":"~50% 이상 득템 찬스"   
+            } ,{
+                "src":"https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172436_147_KOR_20230810114426.jpg?RS=850",
+                "brand":"ck Calvin Klein WOMEN",
+                "title":"컨템포러리 \n  신상 쇼핑 찬스",
+                "subTitle":"23 F/W 30% OFF"   
+            }
+            ,{
+                "src":"https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172436_142_KOR_20230803115249.jpg?RS=850",
+                "brand":"ck Calvin Klein MEN",
+                "title":"컨템포러리 \n  쇼핑 뉴스",
+                "subTitle":"23 F/W  신상 34% OFF"   
+            }   
+        ]
+    }
+    
+]

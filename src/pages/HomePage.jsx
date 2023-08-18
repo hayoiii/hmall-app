@@ -6,6 +6,7 @@ import KeywordRanking from '../components/KeywordRanking';
 import StyleSlider from '../components/StyleSlider';
 import Coupon from '../components/Coupon';
 import Footer from './Footer';
+import BrandLive from '../components/BrandLive';
 
 //'/'
 export default function HomePage() {
@@ -15,6 +16,7 @@ export default function HomePage() {
       <MainSlider images={HomeSlideImages}/>
       <KeywordRanking/>
       <Coupon/>
+      <BrandLive/>
       <StyleSlider/>
       <Footer/>
     </>

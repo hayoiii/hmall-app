@@ -1,12 +1,12 @@
 import { Box, IconButton } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { useEffect, useState } from 'react';
+import { useCallback} from 'react';
 import styled from '@emotion/styled';
 import breakLine from '../utils/breakLine';
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import { useRef } from 'react';
+
 import useImageSlider from '../utils/useImageSlider'
 
 const IMAGE_WIDTH = 1164;
@@ -45,6 +45,7 @@ const ImageSubTitle = styled('p')(({
   transition:'all .5s ease'
 }))
 
+
 function ImageBox({idx, currentIdx, image, activeStyle }) {
 
   return (
@@ -66,7 +67,8 @@ function ImageBox({idx, currentIdx, image, activeStyle }) {
 }
 
 export default function MainSlider({images}) {
-    const {handleClickArrow, currentIdx, setCurrentIdx,autoPlay,setAutoPlay,style} = useImageSlider({length: images.length, isAutoPlay:true, imageWidth:IMAGE_WIDTH})
+    const {handleClickArrow, currentIdx, setCurrentIdx,autoPlay,setAutoPlay,style} = 
+      useImageSlider({length: images.length, isAutoPlay:true, imageWidth:IMAGE_WIDTH, offset:`(100vw - ${IMAGE_WIDTH}px) / 2`})
   
     const handleClickIndicator = (idx) => {
       // currentIdx를 클릭한 idx로 바꿔준다
@@ -78,17 +80,26 @@ export default function MainSlider({images}) {
       // setAutoPlay((previous) => !previous)
     }
 
-    const calculateTranslateX = () => {
-      const left = -IMAGE_WIDTH * currentIdx
-
-      const offset = `calc(${left}px + (100vw - ${IMAGE_WIDTH}px) / 2 )`
-      return offset
-    }
+    const indicatorColor = useCallback((idx)=>{
+      // currentIdx 0 ~ n + 1
+      // idx 0 ~ n - 1
+      if(currentIdx === 0 && idx === images.length - 1) {
+        return '#c2935f'
+      }else if(currentIdx === images.length + 1 && idx === 0){
+        return '#c2935f'
+      }else if(currentIdx - idx === 1){
+        return '#c2935f'
+      }else{
+        return '#eee'
+      }
+    },[currentIdx, images])
 
     const activeStyle = {
       transform:'scale(1)',
       opacity:1,
     }
+
+    
 
     return (
       <Box>
@@ -104,7 +115,7 @@ export default function MainSlider({images}) {
                 p: 0,
                 display: 'flex',
                 listStyle: 'none',
-                ...style
+                ...style,
                 // transform: `translateX(${calculateTranslateX()})`,
                 // transition: '1s transform ease-in-out',
               }}
@@ -147,7 +158,7 @@ export default function MainSlider({images}) {
                 sx={{
                   width: 10,
                   height: 10,
-                  backgroundColor: idx === currentIdx ? 'gray' : 'orange',
+                  backgroundColor: indicatorColor(idx),
                   borderRadius: '50%',
                   ml: 1,
                   cursor: 'pointer',

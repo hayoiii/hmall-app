@@ -74,7 +74,7 @@ export default function Gnb() {
         <MenuBox>
           <MenuList>
             {
-              // [woman, man, kids]
+              // [woman, man, kids] 
               Object.keys(MainMenu).map((value, idx)=>{
                 return <MenuTitle onMouseEnter={() => handleMouseEnter(value)} key={idx}>
                 {MainMenu[value].title}

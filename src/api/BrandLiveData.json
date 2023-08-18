@@ -1,0 +1,44 @@
+[
+  {
+      "brand": "ck Calvin Klein",
+      "products": [
+        {
+            "id": "GM0123040783586",
+            "name": "오픈 폴로 티셔츠",
+            "brand": "ck Calvin Klein MEN",
+            "price": "99000",
+            "img": "https://cdn.hfashionmall.com/goods/CKBR/23/04/07/GM0123040783586_1_ORGINL_1681114744637.jpg?RS=600x600&AR=0&CS=400x600"
+        },
+        {
+            "id": "GM0123031069881",
+            "name": "소프트 브이넥 가디건",
+            "brand": "ck Calvin Klein WOMEN",
+            "price": "199000",
+            "img": "https://cdn.hfashionmall.com/goods/CKBR/23/03/10/GM0123031069881_1_ORGINL_1678697092060.jpg?RS=600x600&AR=0&CS=400x600"
+        },
+        {
+            "id": "GM0123041486697",
+            "name": "오가닉 코튼 반팔 티셔츠",
+            "brand": "ck Calvin Klein MEN",
+            "price": "62100",
+            "img": "https://cdn.hfashionmall.com/goods/CKBR/23/04/14/GM0123041486697_1_ORGINL_1682309912329.jpg?RS=600x600&AR=0&CS=400x600"
+        }
+    ],
+    "images": []
+  },
+  {
+      "brand": "DKNY"
+  },
+  {
+      "brand": "TOMMY HILFIGER"
+  },
+  {
+      "brand": "rouge＆lounge"
+  },
+  {
+      "brand": "CLUB MONACO"
+  },
+  {
+      "brand": "TOM GREYHOUND"
+  }
+]

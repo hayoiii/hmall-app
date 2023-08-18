@@ -1,11 +1,15 @@
 import { useState, useEffect, useRef} from 'react';
-export default function useImageSlider({length, isAutoPlay, imageWidth}) {
+export default function useImageSlider({length, isAutoPlay, imageWidth, offset = '0px'}) {
   
     const [currentIdx, setCurrentIdx] = useState(1);
     const [autoPlay, setAutoPlay] = useState(isAutoPlay); 
     const refTimer = useRef(null);
+    const calculateTranslateX = (idx) => {
+      return `translateX(calc(${-imageWidth * (idx)}px + ${offset}))`
+    }
+
     const [style, setStyle]=useState({
-      transform: `translateX(${-imageWidth * currentIdx}px)`, 
+      transform: calculateTranslateX(1), 
       transition:'all 1s ease'
   })
 
@@ -17,7 +21,7 @@ export default function useImageSlider({length, isAutoPlay, imageWidth}) {
     const back = () => {
       setCurrentIdx((prev) => {
           setStyle({
-              transform: `translateX(${-imageWidth * (prev - 1)}px)`, 
+              transform: calculateTranslateX(prev-1), 
               transition:'all 1s ease'
           })
           return prev - 1
@@ -27,7 +31,7 @@ export default function useImageSlider({length, isAutoPlay, imageWidth}) {
   const next = () => {
       setCurrentIdx((prev)=>{
           setStyle({
-              transform: `translateX(${-imageWidth * (prev + 1)}px)`, 
+              transform: calculateTranslateX(prev+1), 
               transition:'all 1s ease'
           })
           return prev + 1
@@ -63,13 +67,13 @@ const carouselLoop = () => {
   if(currentIdx === 0) {
       setCurrentIdx(lastIdx + 1)
       setTimeout(() => setStyle({
-          transform: `translateX(${-imageWidth * (lastIdx + 1)}px)`, 
+          transform: calculateTranslateX(lastIdx + 1), 
           transition:'unset'
       }), 1100)
   } else if(currentIdx === lastIdx + 2) {
       setCurrentIdx(1)
       setTimeout(() => setStyle({
-          transform: `translateX(${-imageWidth * 1 }px)`, 
+          transform: calculateTranslateX(1), 
           transition:'unset'
       }), 1100)
     }
