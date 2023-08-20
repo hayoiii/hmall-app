@@ -7,6 +7,7 @@ import StyleSlider from '../components/StyleSlider';
 import Coupon from '../components/Coupon';
 import Footer from './Footer';
 import BrandLive from '../components/BrandLive';
+import BCbest from '../components/BCbest';
 
 //'/'
 export default function HomePage() {
@@ -18,6 +19,7 @@ export default function HomePage() {
       <Coupon/>
       <BrandLive/>
       <StyleSlider/>
+      <BCbest/>
       <Footer/>
     </>
   );

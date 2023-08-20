@@ -1,0 +1,167 @@
+[
+    {
+        "brand":[
+            {
+                "name": "FOURM LOUNGE"
+            },
+            {
+                "name": "calvin klein"
+            },
+            {
+                "name": "superfeet"
+            },
+            {
+                "name": "ROCKPORT"
+            },
+            {
+                "name": "TELIC"
+            },
+            {
+                "name": "allegri"
+            },
+            {
+                "name": "Timberland"
+            },
+            {
+                "name": "PIGC"
+            },
+            {
+                "name": "CLUB MONACO"
+            },
+            {
+                "name": "zamberlan"
+            },
+            {
+                "name": "DKNY"
+            },
+            {
+                "name": "rouge & lounge"
+            },
+            {
+                "name": "HUGO"
+            },{
+                "name": "LORNA MURRAY"
+            },  {
+                "name": "TOM GREYHOUND"
+            },  {
+                "name": "ck Calvin Klein"
+            },  {
+                "name": "N°21"
+            },{
+                "name": "JERUSALEM SANDALS"
+            },{
+                "name": "Victorias Shoes"
+            },{
+                "name": "MSR"
+            },{
+                "name": "fitflop"
+            },{
+                "name": "Nalgene"
+            },{
+                "name": "ARENA"
+            },{
+                "name": "BOSS"
+            },{
+                "name": "JSNY"
+            },{
+                "name": "Chums"
+            },{
+                "name": "thermarest"
+            },{
+                "name": "SJYP"
+            },
+            {
+                "name": "American Needle"
+            },{
+                "name": "Ferrao Milano"
+            },{
+                "name": "MSGM"
+            },{
+                "name": "MARTINE GOLF"
+            },{
+                "name": "Laulhere"
+            },{
+                "name": "Cole Haan"
+            },{
+                "name": "PAUL & SHARK"
+            },{
+                "name": "Rab"
+            },{
+                "name": "KEEN"
+            },{
+                "name": "SPEEDO"
+            },
+            {
+                "name": "TOMS"
+            },
+            {
+                "name": "GIAMBATTISTA VALLI"
+            },{
+                "name": "FOURM STUDIO"
+            },{
+                "name": "HARUTA"
+            },{
+                "name": "Magforce"
+            },{
+                "name": "Lowe Alpine"
+            },{
+                "name": "GUESS"
+            },{
+                "name": "DESCENT"
+            },{
+                "name": "Antichi RFomani"
+            },{
+                "name": "ALDO"
+            },{
+                "name": "MUE"
+            },{
+                "name": "FORUM THE STORE"
+            },{
+                "name": "Spring court"
+            },{
+                "name": "Darn Tough"
+            },{
+                "name": "OUR LEGACY"
+            },{
+                "name": "TOMMY HILFIGER"
+            },{
+                "name": "Le Minor"
+            },{
+                "name": "ABENSIMON"
+            },{
+                "name": "UCO"
+            },{
+                "name": "PIG & HEN"
+            },{
+                "name": "Taylormade"
+            },{
+                "name": "Bleu de Chauffe"
+            },{
+                "name": "Seafolly"
+            },{
+                "name": "VERONICA BEARD"
+            },{
+                "name": "MOOSE KNUCKLES"
+            },{
+                "name": "Jolyn"
+            }
+
+
+        ],
+        "category":[
+            {
+                "name": "all"
+            },  {
+                "name": "MEN"
+            },  {
+                "name": "WOMEN"
+            },  {
+                "name": "KIDS"
+            },  {
+                "name": "BAG&ACC"
+            },  {
+                "name": "OUTLET"
+            }
+        ]
+    }   
+]
