@@ -4,8 +4,10 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import BrandLiveData from '../api/BrandLiveData.json';
 import useImageSlider from '../utils/useImageSlider';
 
+const TEXT_WIDTH = 280;
+
 const TabBox = styled('div')({
-  width: '906px',
+  width: TEXT_WIDTH * 3 + 'px',
   margin: '30px auto',
   display: 'flex',
   alignItems: 'center',
@@ -15,38 +17,72 @@ const TabBox = styled('div')({
 const SlideTab = styled('ul')({
   display: 'flex',
   listStyle: 'none',
+  padding: '0',
 });
 
-const TEXT_WIDTH = 280;
+const Item = styled('li')({
+  minWidth: TEXT_WIDTH,
+  height: '44px',
+  lineHeight: '44px',
+  color: 'gray',
+  cursor: 'pointer',
+});
+const activeStyle = {
+  color: 'black',
+  cursor: 'unset',
+};
+
 export default function BrandLiveTab({}) {
-  const {} = useImageSlider({
+  const { style, handleClickArrow, currentIdx } = useImageSlider({
     length: BrandLiveData.length,
     imageWidth: TEXT_WIDTH,
     isAutoPlay: false,
   });
+
+  const activeIdx = currentIdx + 1;
   return (
     <TabBox>
-      <IconButton sx={{ position: 'absolute', left: '0' }}>
+      <IconButton
+        onClick={() => handleClickArrow(true)}
+        sx={{ position: 'absolute', left: '0', zIndex: 1 }}
+      >
         <KeyboardArrowLeftIcon />
       </IconButton>
       {/* BrandLiveData의 마지막 인덱스에 위치한 브랜드 이름을 렌더링한다. */}
-      <SlideTab>
-        <li>{BrandLiveData[BrandLiveData.length - 1].brand}</li>
+      <SlideTab style={style}>
+        <Item style={activeIdx === BrandLiveData.length - 1 ? activeStyle : {}}>
+          {BrandLiveData[BrandLiveData.length - 1].brand}
+        </Item>
         {BrandLiveData.map((value, idx) => {
           return (
-            <li
-              style={{ width: TEXT_WIDTH, height: '44px', lineHeight: '44px' }}
+            <Item
               key={idx}
+              style={activeIdx === idx + 1 ? activeStyle : {}}
+              onClick={
+                activeIdx > idx + 1
+                  ? () => handleClickArrow(true)
+                  : activeIdx < idx + 1
+                  ? () => handleClickArrow(false)
+                  : undefined
+              }
             >
               {value.brand}
-            </li>
+            </Item>
           );
         })}
-        <li>{BrandLiveData[0].brand}</li>
+        <Item style={activeIdx === 0 ? activeStyle : {}}>
+          {BrandLiveData[0].brand}
+        </Item>
       </SlideTab>
-      <IconButton sx={{ position: 'absolute', right: '0' }}>
+      <IconButton
+        onClick={() => handleClickArrow(false)}
+        sx={{ position: 'absolute', right: '0' }}
+      >
         <KeyboardArrowRightIcon />
       </IconButton>
     </TabBox>
   );
 }
+
+// handleClickArrow(true) -> 현재 active한 Item의 왼쪽에 있으면 (currentIdx > 내가 나타내고 있는 idx)
+// handleClickArrow(false) -> 현재 active한 Item의 오른쪽에 있으면 (currentIdx < idx)
