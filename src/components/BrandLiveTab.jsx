@@ -3,6 +3,7 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import BrandLiveData from '../api/BrandLiveData.json';
 import useImageSlider from '../utils/useImageSlider';
+import { useEffect } from 'react';
 
 const TEXT_WIDTH = 280;
 
@@ -32,7 +33,7 @@ const activeStyle = {
   cursor: 'unset',
 };
 
-export default function BrandLiveTab({}) {
+export default function BrandLiveTab({notifyCurrentIdx}) {
   const { style, handleClickArrow, currentIdx } = useImageSlider({
     length: BrandLiveData.length,
     imageWidth: TEXT_WIDTH,
@@ -40,6 +41,13 @@ export default function BrandLiveTab({}) {
   });
 
   const activeIdx = currentIdx + 1;
+
+  useEffect(()=>{
+    notifyCurrentIdx(currentIdx)
+  },[currentIdx,notifyCurrentIdx])
+  
+  
+
   return (
     <TabBox>
       <IconButton
@@ -70,8 +78,37 @@ export default function BrandLiveTab({}) {
             </Item>
           );
         })}
-        <Item style={activeIdx === 0 ? activeStyle : {}}>
+        <Item 
+        onClick={
+          currentIdx > BrandLiveData.length
+            ? () => handleClickArrow(true)
+            : currentIdx < BrandLiveData.length
+            ? () => handleClickArrow(false)
+            : undefined
+        }
+        style={currentIdx === BrandLiveData.length ? activeStyle : {}}>
           {BrandLiveData[0].brand}
+        </Item>
+        <Item 
+        onClick={
+          currentIdx > BrandLiveData.length + 1
+            ? () => handleClickArrow(true)
+            : currentIdx < BrandLiveData.length + 1
+            ? () => handleClickArrow(false)
+            : undefined
+        }
+        style={currentIdx === BrandLiveData.length + 1 ? activeStyle : {}}>
+          {BrandLiveData[1].brand}
+        </Item>
+        <Item
+          onClick={
+            currentIdx > BrandLiveData.length + 2
+              ? () => handleClickArrow(true)
+              : currentIdx < BrandLiveData.length + 2
+              ? () => handleClickArrow(false)
+              : undefined
+          }>
+          {BrandLiveData[2].brand}
         </Item>
       </SlideTab>
       <IconButton

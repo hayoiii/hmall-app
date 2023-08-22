@@ -1,6 +1,59 @@
 [
   {
-      "brand": "ck Calvin Klein",
+        "brand": "ck Calvin Klein",
+        "products": [
+        {
+            "id": "GM0123040783586",
+            "name": "오픈 폴로 티셔츠",
+            "brand": "ck Calvin Klein MEN",
+            "price": "99000",
+            "img": "https://cdn.hfashionmall.com/goods/CKBR/23/04/07/GM0123040783586_1_ORGINL_1681114744637.jpg?RS=600x600&AR=0&CS=400x600"
+        },
+        {
+            "id": "GM0123031069881",
+            "name": "소프트 브이넥 가디건",
+            "brand": "ck Calvin Klein WOMEN",
+            "price": "199000",
+            "img": "https://cdn.hfashionmall.com/goods/CKBR/23/03/10/GM0123031069881_1_ORGINL_1678697092060.jpg?RS=600x600&AR=0&CS=400x600"
+        },
+        {
+            "id": "GM0123041486697",
+            "name": "오가닉 코튼 반팔 티셔츠",
+            "brand": "ck Calvin Klein MEN",
+            "price": "62100",
+            "img": "https://cdn.hfashionmall.com/goods/CKBR/23/04/14/GM0123041486697_1_ORGINL_1682309912329.jpg?RS=600x600&AR=0&CS=400x600"
+        }
+        ],
+        "slideImages": [{
+            "src":"https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172434_252_KOR_20230817133928.jpg?RS=850",
+            "brand":"TOMMY HILFIGER WOMEN",
+            "title":"23 FALL \n NEW-IN",
+            "subTitle":"뉴 시즌 타미힐피거 클래식 아이템"   
+        },{
+            "src": "https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172434_255_KOR_20230817134301.jpg?RS=850",
+            "brand":"TOMMY HILFIGER MEN",
+            "title":"SUPER \n SUMMER SALE",
+            "subTitle":"시즌 오프 할인율 추가! 최대 46%"   
+        } ,{
+            "src":"https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172434_253_KOR_20230817134020.jpg?RS=850",
+            "brand":"TOMMY HILFIGER KIDS",
+            "title":"지금 사야 \n  하는 꿀템",
+            "subTitle":"UP TO 49% OFF + 추가 혜택! 여름 라스트 쇼핑찬스"   
+        }
+        ,{
+            "src":"https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172434_254_KOR_20230817134101.jpg?RS=850",
+            "brand":"TOMMY JEANS",
+            "title":"THIS IS  \n MY NEW STYLE",
+            "subTitle":"23P/F TOMMY JEANS LOOK-BOOK"   
+        }   ,{
+            "src":"https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172434_256_KOR_20230817134455.jpg?RS=850",
+            "brand":"TOMMY SHOES",
+            "title":"TOMMY \n -CORE SHOES",
+            "subTitle":"타미 시그니처 디자인이 담긴 슈즈 큐레이션"   
+        }]
+  },
+  {
+      "brand": "DKNY",
       "products": [
         {
             "id": "GM0123040783586",
@@ -23,14 +76,49 @@
             "price": "62100",
             "img": "https://cdn.hfashionmall.com/goods/CKBR/23/04/14/GM0123041486697_1_ORGINL_1682309912329.jpg?RS=600x600&AR=0&CS=400x600"
         }
-    ],
-    "images": []
-  },
-  {
-      "brand": "DKNY"
+        ],
+      "slideImages":[
+        {
+            "src": "https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172435_160_KOR_20230810114323.jpg?RS=850",
+            "brand": "DKNY",
+            "title": "LAST \nCALL",
+            "subTitlte": "다시 없을 최대 40%+20%+만포인트!"
+        },
+        {
+            "src": "https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172435_159_KOR_20230810114157.jpg?RS=850",
+            "brand": "DKNY MEN",
+            "title": "베스트 \n추가 세일",
+            "subTitlte": "Sale 40%+20%"
+        },
+        {
+            "src": "https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172435_164_KOR_20230817134738.jpg?RS=850",
+            "brand": "DKNY",
+            "title": "취향의 \n발견",
+            "subTitlte": "소재의 차이 본질의 차이"
+        },
+        {
+            "src": "https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172435_165_KOR_20230817134851.jpg?RS=850",
+            "brand": "DKNY MEN",
+            "title": "23SS MEN'S\n STYLING",
+            "subTitlte": "시간이 지나도 변하지 않는 가치"
+        },
+        {
+            "src": "https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172435_160_KOR_20230810114323.jpg?RS=850",
+            "brand": "DKNY",
+            "title": "LAST \nCALL",
+            "subTitlte": "다시 없을 최대 40%+20%+만포인트!"
+        },
+        {
+            "src": "https://cdn.hfashionmall.com/display/category/THM/A05/A03/contents/285_172435_159_KOR_20230810114157.jpg?RS=850",
+            "brand": "DKNY MEN",
+            "title": "베스트 \n추가 세일",
+            "subTitlte": "Sale 40%+20%"
+        }
+    ]
   },
   {
       "brand": "TOMMY HILFIGER"
+
   },
   {
       "brand": "rouge＆lounge"

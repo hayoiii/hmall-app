@@ -2,7 +2,7 @@ import { Box, IconButton, styled } from '@mui/material';
 import BrandLiveData from '../api/BrandLiveData.json';
 import brandSlide from '../api/brandslide.json';
 import useImageSlider from '../utils/useImageSlider';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 import BrandLiveSlider from './BrandLiveSlider';
 import BrandLiveTab from './BrandLiveTab';
@@ -24,14 +24,24 @@ const ItemList = styled('div')({
   justifyContent: 'center',
 });
 
+
 export default function BrandLive() {
+
+  const [currentIdx, setCurrentIdx] =useState(0)
+
+  const notifyCurrentIdx = (idx) => {
+    console.log(idx)
+    setCurrentIdx(idx)
+  }
+
+
   return (
     <BrandTab>
       <h3>BRAND LIVE</h3>
-      <BrandLiveTab />
+      <BrandLiveTab notifyCurrentIdx={notifyCurrentIdx}/>
       <ItemBox>
         <ItemList>
-          {BrandLiveData[0].products.map((product, idx) => {
+          {BrandLiveData[currentIdx].products.map((product, idx) => {
             return (
               <figure style={{ margin: 0 }} key={idx}>
                 <img
@@ -54,7 +64,7 @@ export default function BrandLive() {
             );
           })}
         </ItemList>
-        <BrandLiveSlider products={brandSlide[0].products} />
+        <BrandLiveSlider products={BrandLiveData[currentIdx].slideImages} />
       </ItemBox>
     </BrandTab>
   );

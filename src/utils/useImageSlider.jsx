@@ -4,9 +4,8 @@ export default function useImageSlider({
   isAutoPlay,
   imageWidth,
   offset = '0px',
-  numOfShown = 1,
 }) {
-  const [currentIdx, setCurrentIdx] = useState(numOfShown);
+  const [currentIdx, setCurrentIdx] = useState(1);
   const [autoPlay, setAutoPlay] = useState(isAutoPlay);
   const refTimer = useRef(null);
   const calculateTranslateX = (idx) => {
@@ -14,7 +13,7 @@ export default function useImageSlider({
   };
 
   const [style, setStyle] = useState({
-    transform: calculateTranslateX(numOfShown),
+    transform: calculateTranslateX(1),
     transition: 'all 1s ease',
   });
 
@@ -62,14 +61,7 @@ export default function useImageSlider({
 
   useEffect(() => {
     const lastIdx = length - 1;
-    // fake fake 0 1 2 fake fake
-    //  0    1   2 3 4  5    6
-    // lastIdx = 이미지의 마지막 index
-    // numOfShown = 한 번에 보이는 이미지 수 = fake 이미지의 개수 / 2
-    // numOfShown + imglength
-    // numOfShown = 2    <= 1
-    // numOfShown = 3    <= 2
-    if (currentIdx <= numOfShown - 1 || currentIdx >= numOfShown + length) {
+    if (currentIdx === 0 || currentIdx === lastIdx + 2) {
       carouselLoop();
     }
   }, [currentIdx]);
